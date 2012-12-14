@@ -1,5 +1,9 @@
 package com.mindscriptact.starlingtest.view.game {
 import com.mindscriptact.starlingtest.picLib.PicResources;
+import com.mindscriptact.starlingtest.view.game.elements.CroshareImage;
+import com.mindscriptact.starlingUtils.easyShapes.EasyCircleImage;
+import com.mindscriptact.starlingUtils.easyShapes.EasyShapeImage;
+import com.mindscriptact.starlingUtils.easyShapes.EasySquareImage;
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.IBitmapDrawable;
@@ -57,7 +61,6 @@ public class GameMediator extends Mediator {
 		image4.y = image4.height;
 		view.addChild(image4);
 		
-		
 		var santaBD:Bitmap = new santaAtlasBitmap();
 		var texture:Texture = Texture.fromBitmap(santaBD);
 		
@@ -67,14 +70,12 @@ public class GameMediator extends Mediator {
 		
 		var santaFrames:Vector.<Texture> = sTextureAtlas.getTextures("santa_");
 		
-		
 		for (var i:int = 0; i < 50; i++) {
 			
 			mMovie = new MovieClip(santaFrames, 8);
 			mMovie.x = Math.floor(Math.random() * 500);
 			mMovie.y = Math.floor(Math.random() * 500);
 			
-
 			view.addChild(mMovie);
 			mMovie.loop = true;
 			mMovie.play();
@@ -129,22 +130,13 @@ public class GameMediator extends Mediator {
 		//quadTest.y = position.y - 5;
 		//view.addChild(quadTest);
 		
-		var bd:BitmapData = new BitmapData(10, 10, true, 0x0);
+		//
+		var myImage:Image = new CroshareImage();
+		//var myImage:Image = new EasyCircleImage(10);
+		//var myImage:Image = new EasySquareImage(10);
 		
-		var rectangle:Shape = new Shape();
-		rectangle.graphics.lineStyle(0.1, 0xFF0000);
-		rectangle.graphics.moveTo(0, 5);
-		rectangle.graphics.lineTo(10, 5);
-		rectangle.graphics.moveTo(5, 0);
-		rectangle.graphics.lineTo(5, 10);
-		bd.draw(rectangle);
-		
-		var texture:Texture = Texture.fromBitmapData(bd);
-		
-		var myImage:Image = new Image(texture);
-		
-		myImage.x = position.x - 5;
-		myImage.y = position.y - 5;
+		myImage.x = position.x;
+		myImage.y = position.y;
 		view.addChild(myImage);
 	
 	}
