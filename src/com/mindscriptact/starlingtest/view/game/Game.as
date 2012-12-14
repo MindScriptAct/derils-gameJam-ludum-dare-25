@@ -16,9 +16,6 @@ public class Game extends Sprite {
 	private function handleAddedToStage(event:Event):void {
 		removeEventListener(Event.ADDED_TO_STAGE, handleAddedToStage);
 		
-
-		
-		
 		
 		
 		//quadTest.scaleX = 5;

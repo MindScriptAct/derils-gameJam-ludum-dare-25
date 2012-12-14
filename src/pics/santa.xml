@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="santa.png">
+    <SubTexture name="santa_1" y="0" x="0" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_2" y="0" x="64" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_3" y="0" x="128" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_4" y="0" x="192" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_5" y="0" x="256" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_6" y="0" x="320" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_7" y="0" x="384" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_8" y="0" x="448" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_9" y="0" x="512" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_10" y="0" x="576" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+    <SubTexture name="santa_11" y="0" x="640" width="64" height="72" frameX="0" frameY="0" frameWidth="64" frameHeight="72"/>
+</TextureAtlas>
+
+
+
+
+
+
+
+
+
+
+

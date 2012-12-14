@@ -29,8 +29,6 @@ public class Main extends Sprite {
 		
 		MvcExpressLogger.init(this.stage, 800, 0, 700, 400, 1, true);
 		
-		
-		
 		this.addChild(new Stats(400, 820, 420, false, true, true));
 		//
 		var starlingTestModule:StarlingTestModule = new StarlingTestModule();
@@ -38,5 +36,4 @@ public class Main extends Sprite {
 	}
 
 }
-
 }

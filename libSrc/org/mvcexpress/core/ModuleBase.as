@@ -109,7 +109,7 @@ public class ModuleBase {
 		
 		// processMap
 		CONFIG::mvcExpressLive {
-			processMap = new ProcessMap(_moduleName);
+			processMap = new ProcessMap(_moduleName, _messenger);
 		}
 		
 		// proxyMap
