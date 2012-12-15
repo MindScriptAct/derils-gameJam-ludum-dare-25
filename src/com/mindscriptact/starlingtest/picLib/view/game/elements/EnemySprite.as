@@ -1,6 +1,7 @@
 package com.mindscriptact.starlingtest.view.game.elements {
 import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingUtils.easyShapes.EasyRectangeImage;
+import com.mindscriptact.starlingUtils.easyShapes.EasySquareImage;
 import starling.display.Image;
 import starling.display.Sprite;
 
@@ -14,7 +15,7 @@ public class EnemySprite extends Sprite {
 	public var enemyId:int;
 	
 	public function EnemySprite(enemyId:int) {
-		var squareImage:EasyRectangeImage = new EasyRectangeImage(64, 64, 0xFFFF00, -1, 0, true);
+		var squareImage:EasySquareImage = new EasySquareImage(64, 0xFFFF00, -1, 0);
 		this.addChild(squareImage);
 		this.enemyId = enemyId;
 		
