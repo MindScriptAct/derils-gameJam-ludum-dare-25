@@ -16,13 +16,17 @@ public class EnemyProxy extends Proxy {
 	
 	}
 	
-	public function addEnemy(position:Point, leftSide:Boolean, moveSpeed:Number):void {
+	public function addEnemy(position:Point, leftSide:Boolean, moveSpeed:Number, totalMoney:int):void {
 		trace("EnemyProxy.addEnemy");
 		
 		var enemy:EnemyVO = new EnemyVO();
 		enemy.position = position;
 		enemy.leftSide = leftSide;
 		enemy.moveSpeed = moveSpeed;
+		
+		enemy.totalMoney = totalMoney;
+		enemy.curentMoney = totalMoney;
+		
 		enemies.push(enemy);
 		
 		sendMessage(DataMessage.ENEMY_ADDED, enemy.id);

@@ -5,7 +5,7 @@ import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.picLib.PicResources;
 import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
 import com.mindscriptact.starlingtest.view.game.elements.CroshareImage;
-import com.mindscriptact.starlingtest.view.game.elements.EnemyImage;
+import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import com.mindscriptact.starlingUtils.easyShapes.EasyCircleImage;
 import com.mindscriptact.starlingUtils.easyShapes.EasyShapeImage;
 import com.mindscriptact.starlingUtils.easyShapes.EasySquareImage;
@@ -46,7 +46,7 @@ public class GameMediator extends Mediator {
 	private var gamePlayerHolder:Sprite;
 	
 	[Provide(name="enemie_components")]
-	public var enemyImages:Vector.<EnemyImage> = new Vector.<EnemyImage>();
+	public var enemyImages:Vector.<EnemySprite> = new Vector.<EnemySprite>();
 	
 	public var bankster:BanksterImage;
 	
@@ -102,7 +102,7 @@ public class GameMediator extends Mediator {
 	}
 	
 	private function handleAddEnemy(enemyId:int):void {
-		var enemy:EnemyImage = new EnemyImage(enemyId);
+		var enemy:EnemySprite = new EnemySprite(enemyId);
 		gamePlayerHolder.addChildAt(enemy, 0);
 		enemy.x = -200;
 		enemyImages.push(enemy);

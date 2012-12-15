@@ -1,7 +1,7 @@
 package com.mindscriptact.starlingtest.engine.tasks {
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
 import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
-import com.mindscriptact.starlingtest.view.game.elements.EnemyImage;
+import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import flash.geom.Point;
 import org.mvcexpress.live.Task;
 
@@ -21,7 +21,7 @@ public class MoveViewElementTask extends Task {
 	public var enemies:Vector.<EnemyVO>
 	
 	[Inject(name="enemie_components")]
-	public var enemyImages:Vector.<EnemyImage>
+	public var enemyImages:Vector.<EnemySprite>
 	
 	override public function run():void {
 		// put bankster to correct positio
