@@ -1,5 +1,5 @@
 package com.mindscriptact.starlingtest.model.enemies {
-	import flash.geom.Point;
+import flash.geom.Point;
 
 /**
  * COMMENT
@@ -15,9 +15,27 @@ public class EnemyVO {
 	public var leftSide:Boolean;
 	public var moveSpeed:Number;
 	
+	private var _totalMoney:int;
+	private var _curentMoney:int;
+	public var moneyPerc:Number;
 	
-	public var totalMoney:int;
-	public var curentMoney:int;
+	public function get totalMoney():int {
+		return _totalMoney;
+	}
+	
+	public function set totalMoney(value:int):void {
+		_totalMoney = value;
+		moneyPerc = _curentMoney / _totalMoney;
+	}
+	
+	public function get curentMoney():int {
+		return _curentMoney;
+	}
+	
+	public function set curentMoney(value:int):void {
+		_curentMoney = value;
+		moneyPerc = _curentMoney / _totalMoney;
+	}
 
 }
 }

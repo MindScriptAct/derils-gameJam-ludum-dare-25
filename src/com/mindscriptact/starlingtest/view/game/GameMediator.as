@@ -5,6 +5,7 @@ import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import com.mindscriptact.starlingUtils.easySprites.EasyBackgroundSprite;
 import org.mvcexpress.mvc.Mediator;
+import starling.display.Image;
 import starling.display.MovieClip;
 import starling.display.Sprite;
 
@@ -27,6 +28,10 @@ public class GameMediator extends Mediator {
 	
 	[Provide(name="enemie_components")]
 	public var enemyImages:Vector.<EnemySprite> = new Vector.<EnemySprite>();
+	[Provide(name="enemie_bar_components")]
+	public var enemyBarImages:Vector.<Image> = new Vector.<Image>();
+	[Provide(name="enemie_bar_image_components")]
+	public var enemyBarBorderImages:Vector.<Image> = new Vector.<Image>();
 	
 	public var bankster:BanksterImage;
 	
@@ -48,8 +53,7 @@ public class GameMediator extends Mediator {
 		processMap.provide(bankster, "bankster_component");
 		
 		addHandler(DataMessage.ENEMY_ADDED, handleAddEnemy);
-		
-		
+	
 		//var santaBD:Bitmap = new santaAtlasBitmap();
 		//var texture:Texture = Texture.fromBitmap(santaBD);
 		//
@@ -84,6 +88,17 @@ public class GameMediator extends Mediator {
 		gamePlayerHolder.addChildAt(enemy, 0);
 		enemy.x = -200;
 		enemyImages.push(enemy);
+	
+		var moneyRect:Image = new Image(PicResources.getTexture(PicResources.ENEMY_MONEY_BAR_ID));
+		gamePlayerHolder.addChild(moneyRect);
+		enemyBarImages.push(moneyRect);
+		moneyRect.x = -200;
+		
+		var moneyRectBorder:Image = new Image(PicResources.getTexture(PicResources.ENEMY_MONEY_BORDER_ID));
+		gamePlayerHolder.addChild(moneyRectBorder);
+		enemyBarBorderImages.push(moneyRectBorder);
+		moneyRectBorder.x = -200;		
+		
 	}
 	
 	/*

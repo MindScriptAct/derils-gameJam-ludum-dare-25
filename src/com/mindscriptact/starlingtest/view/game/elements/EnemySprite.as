@@ -22,21 +22,21 @@ public class EnemySprite extends Sprite {
 		enemyImage.pivotY = enemyImage.height >> 1;
 		this.enemyId = enemyId;
 		
-		moneyRect = new Image(PicResources.getTexture(PicResources.ENEMY_MONEY_BAR_ID));
-		this.addChild(moneyRect);
-		moneyRect.x = -25;
-		moneyRect.y = -GameConstants.ENEMY_SIZE + 10;
-		
-		var moneyRectFrame:Image = new Image(PicResources.getTexture(PicResources.ENEMY_MONEY_BORDER_ID));
-		this.addChild(moneyRectFrame);
-		moneyRectFrame.x = -25;
-		moneyRectFrame.y = -GameConstants.ENEMY_SIZE + 10;
+		//moneyRect = new Image(PicResources.getTexture(PicResources.ENEMY_MONEY_BAR_ID));
+		//this.addChild(moneyRect);
+		//moneyRect.x = -25;
+		//moneyRect.y = -GameConstants.ENEMY_SIZE + 10;
+		//
+		//var moneyRectFrame:Image = new Image(PicResources.getTexture(PicResources.ENEMY_MONEY_BORDER_ID));
+		//this.addChild(moneyRectFrame);
+		//moneyRectFrame.x = -25;
+		//moneyRectFrame.y = -GameConstants.ENEMY_SIZE + 10;
 	
 	}
 	
-	public function showMoneyPerc(perc:Number):void {
-		moneyRect.scaleX = perc;
-	}
+	//public function showMoneyPerc(perc:Number):void {
+		//moneyRect.scaleX = perc;
+	//}
 
 }
 }
