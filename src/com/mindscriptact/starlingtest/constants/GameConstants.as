@@ -12,6 +12,9 @@ public class GameConstants {
 	
 	static public const BANKSTA_MOVE_SPEED:int = 10;
 	
+	static public const BANK_TIME:int = 2000;
+	
+	
 	static public const ENEMY_MOVE_SPEED_BASE:int = 2;
 	static public const ENEMY_MOVE_SPEED_MODIFIER:int = 3;
 

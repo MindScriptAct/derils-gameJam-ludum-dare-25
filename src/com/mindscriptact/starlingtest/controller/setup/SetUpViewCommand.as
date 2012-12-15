@@ -2,6 +2,8 @@ package com.mindscriptact.starlingtest.controller.setup{
 import com.mindscriptact.starlingtest.Main;
 import com.mindscriptact.starlingtest.view.game.Game;
 import com.mindscriptact.starlingtest.view.game.GameMediator;
+import com.mindscriptact.starlingtest.view.gui.GuiHolder;
+import com.mindscriptact.starlingtest.view.gui.GuiMediator;
 import com.mindscriptact.starlingtest.view.main.MainMediator;
 import com.mindscriptact.starlingtest.view.starling.StarlingMediator;
 import org.mvcexpress.mvc.Command;
@@ -22,6 +24,8 @@ public class SetUpViewCommand extends Command {
 		mediatorMap.map(Main, MainMediator);
 		
 		mediatorMap.map(Game, GameMediator);
+		
+		mediatorMap.map(GuiHolder, GuiMediator);
 		
 	}
 	

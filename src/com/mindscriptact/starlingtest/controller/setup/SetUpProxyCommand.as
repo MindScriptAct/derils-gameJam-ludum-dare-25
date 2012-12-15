@@ -1,6 +1,7 @@
 package com.mindscriptact.starlingtest.controller.setup {
 import com.mindscriptact.starlingtest.model.bankster.BanksterProxy;
 import com.mindscriptact.starlingtest.model.enemies.EnemyProxy;
+import com.mindscriptact.starlingtest.model.gui.GuiProxy;
 import com.mindscriptact.starlingtest.model.keyboard.KeyboardProxy;
 import flash.display.Stage;
 import org.mvcexpress.mvc.Command;
@@ -15,6 +16,7 @@ public class SetUpProxyCommand extends Command {
 		proxyMap.map(new KeyboardProxy(stage));
 		proxyMap.map(new BanksterProxy());
 		proxyMap.map(new EnemyProxy());
+		proxyMap.map(new GuiProxy());
 	}
 
 }

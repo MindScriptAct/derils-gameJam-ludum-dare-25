@@ -3,6 +3,7 @@ import com.bit101.components.HUISlider;
 import com.bit101.components.PushButton;
 import com.mindscriptact.starlingtest.Main;
 import com.mindscriptact.starlingtest.messages.Message;
+import com.mindscriptact.starlingtest.view.gui.GuiHolder;
 import flash.events.Event;
 import org.mvcexpress.mvc.Mediator;
 
@@ -20,6 +21,15 @@ public class MainMediator extends Mediator {
 	//public var myProxy:MyProxy;
 	
 	override public function onRegister():void {
+		
+		var guiHolder:GuiHolder = new GuiHolder();
+		view.addChild(guiHolder);
+		
+		mediatorMap.mediate(guiHolder);
+		
+		
+		
+		
 		antialiasing = new HUISlider(view, 1300, 550, "Antialiasing", handleValueChange);
 		antialiasing.value = 1;
 		antialiasing.minimum = 0;
