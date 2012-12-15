@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.view.main {
 import com.bit101.components.HUISlider;
+import com.bit101.components.PushButton;
 import com.mindscriptact.starlingtest.Main;
 import com.mindscriptact.starlingtest.messages.Message;
 import flash.events.Event;
@@ -24,6 +25,12 @@ public class MainMediator extends Mediator {
 		antialiasing.minimum = 0;
 		antialiasing.maximum = 16;
 		antialiasing.labelPrecision = 0;
+		
+		var startButton:PushButton = new PushButton(view, 1300, 580, "START", handleStartGame);
+	}
+	
+	private function handleStartGame(event:Event):void {
+		sendMessage(Message.START_GAME, 0);
 	}
 	
 	private function handleValueChange(event:Event):void {
