@@ -1,6 +1,7 @@
 package com.mindscriptact.starlingtest.engine {
 import com.mindscriptact.starlingtest.engine.tasks.HeadTask;
 import com.mindscriptact.starlingtest.engine.tasks.MoveBanksterTask;
+import com.mindscriptact.starlingtest.engine.tasks.MoveEnemiesTask;
 import com.mindscriptact.starlingtest.engine.tasks.MoveViewElementTask;
 import com.mindscriptact.starlingtest.messages.Message;
 import org.mvcexpress.live.Process;
@@ -18,6 +19,7 @@ public class GameProcess extends Process {
 		
 		
 		var moveBanksterTask:Task = this.mapTask(MoveBanksterTask);
+		var moveEnemiesTask:Task = this.mapTask(MoveEnemiesTask);
 		
 		
 		
@@ -27,7 +29,9 @@ public class GameProcess extends Process {
 		
 		this.addTask(headTask);
 		
+		
 		this.addTask(moveBanksterTask);
+		this.addTask(moveEnemiesTask);
 		
 		
 		this.addTask(movecViewElements);

@@ -10,6 +10,7 @@ public class Message {
 	static public const START_GAME:String = "startGame";
 	
 	static public const SPACE_PRESS:String = "spacePress";
+	static public const ADD_COMMONER:String = "addCommoner";
 
 }
 }

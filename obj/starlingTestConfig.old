@@ -41,7 +41,7 @@
     <path-element>C:\Users\Deril\Dropbox\!workspace\ludumDare25\src\com\mindscriptact\starlingtest\Main.as</path-element>
   </file-specs>
   <default-background-color>#C0C0C0</default-background-color>
-  <default-frame-rate>30</default-frame-rate>
+  <default-frame-rate>60</default-frame-rate>
   <default-size>
     <width>1800</width>
     <height>800</height>

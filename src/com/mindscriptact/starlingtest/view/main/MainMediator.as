@@ -27,6 +27,12 @@ public class MainMediator extends Mediator {
 		antialiasing.labelPrecision = 0;
 		
 		var startButton:PushButton = new PushButton(view, 1300, 580, "START", handleStartGame);
+		
+		var addCommanButton:PushButton = new PushButton(view, 1400, 580, "ADD COMMONER", handleAddCommoner);
+	}
+	
+	public function handleAddCommoner(event:Event):void {
+		sendMessage(Message.ADD_COMMONER, 1);
 	}
 	
 	private function handleStartGame(event:Event):void {

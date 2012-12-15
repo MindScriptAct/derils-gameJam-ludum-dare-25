@@ -9,7 +9,7 @@ package com.mindscriptact.starlingtest.engine.tasks {
 public class HeadTask extends Task {
 	
 	override public function run():void {
-		trace( "HeadTask.run" );
+		//trace( "HeadTask.run" );
 	}
 	
 }

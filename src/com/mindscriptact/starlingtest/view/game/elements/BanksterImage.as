@@ -8,7 +8,7 @@ package com.mindscriptact.starlingtest.view.game.elements {
 public class BanksterImage extends EasySquareImage {
 	
 	public function BanksterImage() {
-		super(64, 0xFF0000, -1, 0);
+		super(64, 0x00FF00, -1, 0);
 	}
 	
 }

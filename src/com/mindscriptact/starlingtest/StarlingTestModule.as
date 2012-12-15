@@ -6,7 +6,9 @@ import com.mindscriptact.starlingtest.controller.setup.SetUpKeyboerdCommand;
 import com.mindscriptact.starlingtest.controller.setup.SetUpProcessesCommand;
 import com.mindscriptact.starlingtest.controller.setup.SetUpProxyCommand;
 import com.mindscriptact.starlingtest.controller.setup.SetUpViewCommand;
+import com.mindscriptact.starlingtest.messages.DataMessage;
 import com.mindscriptact.starlingtest.messages.Message;
+import com.mindscriptact.starlingtest.messages.ViewMessage;
 import com.mindscriptact.starlingtest.model.keyboard.KeyboardProxy;
 import com.mindscriptact.starlingtest.view.game.Game;
 import com.mindscriptact.starlingtest.view.starling.StarlingMediator;
@@ -15,6 +17,7 @@ import flash.events.Event;
 import flash.geom.Rectangle;
 import flash.utils.setTimeout;
 import org.mvcexpress.modules.ModuleCore;
+import org.mvcexpress.utils.checkClassStringConstants;
 import starling.core.Starling;
 
 /**
@@ -32,15 +35,14 @@ public class StarlingTestModule extends ModuleCore {
 	}
 	
 	override protected function onInit():void {
+		CONFIG::debug {
+			checkClassStringConstants(Message, DataMessage, ViewMessage);
+		}
 	
 	}
 	
 	public function start(main:Main):void {
 		trace("StarlingTestModule.start > main : " + main);
-		
-		// set up keyboard
-		
-		processMap.setStage(main.stage);
 		
 		commandMap.execute(SetUpProxyCommand, main.stage);
 		
@@ -49,6 +51,9 @@ public class StarlingTestModule extends ModuleCore {
 		commandMap.execute(SetUpKeyboerdCommand);
 		
 		commandMap.execute(SetUpControllerCommand);
+		// set up keyboard
+		
+		processMap.setStage(main.stage);
 		
 		var mStarling:Starling = new Starling(Game, main.stage, new Rectangle(0, 0, GameConstants.GAME_WIDTH, GameConstants.GAME_HEIGHT));
 		//var mStarling:Starling = new Starling(Game, main.stage, new Rectangle(0, 0, 800, 600),null, Context3DRenderMode.SOFTWARE);

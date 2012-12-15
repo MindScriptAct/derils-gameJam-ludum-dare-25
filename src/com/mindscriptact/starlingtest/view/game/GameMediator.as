@@ -1,9 +1,11 @@
 package com.mindscriptact.starlingtest.view.game {
 import com.mindscriptact.starlingtest.constants.GameConstants;
+import com.mindscriptact.starlingtest.messages.DataMessage;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.picLib.PicResources;
 import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
 import com.mindscriptact.starlingtest.view.game.elements.CroshareImage;
+import com.mindscriptact.starlingtest.view.game.elements.EnemyImage;
 import com.mindscriptact.starlingUtils.easyShapes.EasyCircleImage;
 import com.mindscriptact.starlingUtils.easyShapes.EasyShapeImage;
 import com.mindscriptact.starlingUtils.easyShapes.EasySquareImage;
@@ -19,6 +21,7 @@ import starling.core.Starling;
 import starling.display.Image;
 import starling.display.MovieClip;
 import starling.display.Quad;
+import starling.display.Sprite;
 import starling.events.Touch;
 import starling.events.TouchEvent;
 import starling.events.TouchPhase;
@@ -40,6 +43,10 @@ public class GameMediator extends Mediator {
 	[Embed(source="/pics/santa.png")]
 	private const santaAtlasBitmap:Class;
 	private var mMovie:MovieClip;
+	private var gamePlayerHolder:Sprite;
+	
+	[Provide(name="enemie_components")]
+	public var enemyImages:Vector.<EnemyImage> = new Vector.<EnemyImage>();
 	
 	public var bankster:BanksterImage;
 	
@@ -51,12 +58,19 @@ public class GameMediator extends Mediator {
 		var bg:EasyBackgroundSprite = new EasyBackgroundSprite(PicResources.getBitmap(PicResources.DIRT_ID), 3, 2);
 		view.addChild(bg);
 		
+		// TODO mediate...
+		gamePlayerHolder = new Sprite();
+		view.addChild(gamePlayerHolder);
+		
+		
 		bankster = new BanksterImage();
-		view.addChild(bankster);
+		gamePlayerHolder.addChild(bankster);
 		
 		processMap.provide(bankster, "bankster_component");
 		
-		addHandler(Message.START_GAME, handleStartGame);
+		addHandler(DataMessage.ENEMY_ADDED, handleAddEnemy);
+		
+		
 	
 		//var santaBD:Bitmap = new santaAtlasBitmap();
 		//var texture:Texture = Texture.fromBitmap(santaBD);
@@ -87,9 +101,11 @@ public class GameMediator extends Mediator {
 	
 	}
 	
-	private function handleStartGame(level:int):void {
-		bankster.x = GameConstants.GAME_WIDTH >> 1;
-		bankster.y = GameConstants.GAME_HEIGHT >> 1;
+	private function handleAddEnemy(enemyId:int):void {
+		var enemy:EnemyImage = new EnemyImage(enemyId);
+		gamePlayerHolder.addChildAt(enemy, 0);
+		enemy.x = -200;
+		enemyImages.push(enemy);
 	}
 	
 	/*
