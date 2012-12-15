@@ -35,13 +35,12 @@ public class GameMediator extends Mediator {
 	
 	override public function onRegister():void {
 		
-		var bg:EasyBackgroundSprite = new EasyBackgroundSprite(PicResources.getBitmap(PicResources.DIRT_ID), 3, 2);
+		var bg:EasyBackgroundSprite = new EasyBackgroundSprite(PicResources.getTexture(PicResources.DIRT_ID), 3, 2);
 		view.addChild(bg);
 		
 		// TODO mediate...
 		gamePlayerHolder = new Sprite();
 		view.addChild(gamePlayerHolder);
-		
 		
 		bankster = new BanksterImage();
 		gamePlayerHolder.addChild(bankster);
@@ -51,7 +50,6 @@ public class GameMediator extends Mediator {
 		addHandler(DataMessage.ENEMY_ADDED, handleAddEnemy);
 		
 		
-	
 		//var santaBD:Bitmap = new santaAtlasBitmap();
 		//var texture:Texture = Texture.fromBitmap(santaBD);
 		//
