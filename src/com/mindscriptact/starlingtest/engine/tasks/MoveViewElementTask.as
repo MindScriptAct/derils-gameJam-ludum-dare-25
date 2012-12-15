@@ -1,6 +1,7 @@
 package com.mindscriptact.starlingtest.engine.tasks {
-	import org.mvcexpress.live.Task;
-	
+import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
+import flash.geom.Point;
+import org.mvcexpress.live.Task;
 
 /**
  * COMMENT
@@ -8,9 +9,17 @@ package com.mindscriptact.starlingtest.engine.tasks {
  */
 public class MoveViewElementTask extends Task {
 	
-	public function MoveViewElementTask() {
-		
-	}
+	[Inject(name="bankster_Position")]
+	public var curentPosition:Point;
 	
+	[Inject(name="bankster_component")]
+	public var bankster:BanksterImage;
+	
+	override public function run():void {
+		// put bankster to correct positio
+		bankster.x = curentPosition.x;
+		bankster.y = curentPosition.y;
+	}
+
 }
 }

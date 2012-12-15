@@ -1,8 +1,10 @@
 package com.mindscriptact.starlingtest {
 import com.bit101.components.HUISlider;
 import com.mindscriptact.starlingtest.constants.GameConstants;
+import com.mindscriptact.starlingtest.controller.setup.SetUpControllerCommand;
 import com.mindscriptact.starlingtest.controller.setup.SetUpKeyboerdCommand;
 import com.mindscriptact.starlingtest.controller.setup.SetUpProcessesCommand;
+import com.mindscriptact.starlingtest.controller.setup.SetUpProxyCommand;
 import com.mindscriptact.starlingtest.controller.setup.SetUpViewCommand;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.keyboard.KeyboardProxy;
@@ -40,13 +42,13 @@ public class StarlingTestModule extends ModuleCore {
 		
 		processMap.setStage(main.stage);
 		
-		proxyMap.map(new KeyboardProxy(main.stage));
+		commandMap.execute(SetUpProxyCommand, main.stage);
 		
 		commandMap.execute(SetUpViewCommand);
 		
 		commandMap.execute(SetUpKeyboerdCommand);
 		
-		commandMap.execute(SetUpProcessesCommand);
+		commandMap.execute(SetUpControllerCommand);
 		
 		var mStarling:Starling = new Starling(Game, main.stage, new Rectangle(0, 0, GameConstants.GAME_WIDTH, GameConstants.GAME_HEIGHT));
 		//var mStarling:Starling = new Starling(Game, main.stage, new Rectangle(0, 0, 800, 600),null, Context3DRenderMode.SOFTWARE);
@@ -60,6 +62,7 @@ public class StarlingTestModule extends ModuleCore {
 	}
 	
 	private function debugStartGame():void {
+		commandMap.execute(SetUpProcessesCommand);
 		sendMessage(Message.START_GAME, 1);
 	}
 	

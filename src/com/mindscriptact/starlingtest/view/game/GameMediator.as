@@ -41,7 +41,6 @@ public class GameMediator extends Mediator {
 	private const santaAtlasBitmap:Class;
 	private var mMovie:MovieClip;
 	
-	[Provide(name="bankster")]
 	public var bankster:BanksterImage;
 	
 	[Embed(source="/pics/santa.xml",mimeType="application/octet-stream")]
@@ -54,10 +53,11 @@ public class GameMediator extends Mediator {
 		
 		bankster = new BanksterImage();
 		view.addChild(bankster);
-	
+		
+		processMap.provide(bankster, "bankster_component");
 		
 		addHandler(Message.START_GAME, handleStartGame);
-		
+	
 		//var santaBD:Bitmap = new santaAtlasBitmap();
 		//var texture:Texture = Texture.fromBitmap(santaBD);
 		//

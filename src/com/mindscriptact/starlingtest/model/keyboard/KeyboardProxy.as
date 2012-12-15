@@ -10,7 +10,10 @@ import org.mvcexpress.mvc.Proxy;
  */
 public class KeyboardProxy extends Proxy {
 	private var stage:Stage;
-	private var keyRegistry:Dictionary = new Dictionary();
+	
+	[Provide (name="keyBoardRegistry")]
+	public var keyRegistry:Dictionary = new Dictionary();
+	
 	private var messageKeysRegistry:Dictionary = new Dictionary();
 	
 	public function KeyboardProxy(stage:Stage) {
