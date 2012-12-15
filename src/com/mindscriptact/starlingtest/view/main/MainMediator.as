@@ -7,7 +7,7 @@ import org.mvcexpress.mvc.Mediator;
 
 /**
  * TODO:CLASS COMMENT
- * @author Raimundas Banevicius (raima156@yahoo.com)
+ * @author Raimundas Banevicius (http://mvcexpress.org)
  */
 public class MainMediator extends Mediator {
 	private var antialiasing:HUISlider;
@@ -19,7 +19,7 @@ public class MainMediator extends Mediator {
 	//public var myProxy:MyProxy;
 	
 	override public function onRegister():void {
-		antialiasing = new HUISlider(view, 850, 550, "Antialiasing", handleValueChange);
+		antialiasing = new HUISlider(view, 1300, 550, "Antialiasing", handleValueChange);
 		antialiasing.value = 1;
 		antialiasing.minimum = 0;
 		antialiasing.maximum = 16;

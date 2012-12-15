@@ -27,9 +27,9 @@ public class Main extends Sprite {
 		this.stage.scaleMode = StageScaleMode.NO_SCALE;
 		this.stage.align = StageAlign.TOP_LEFT;
 		
-		MvcExpressLogger.init(this.stage, 800, 0, 700, 400, 1, true);
+		MvcExpressLogger.init(this.stage, 1280, 0, 700, 400, 1, true);
 		
-		this.addChild(new Stats(400, 820, 420, false, true, true));
+		this.addChild(new Stats(400, 1290, 420, false, true, true));
 		//
 		var starlingTestModule:StarlingTestModule = new StarlingTestModule();
 		starlingTestModule.start(this);

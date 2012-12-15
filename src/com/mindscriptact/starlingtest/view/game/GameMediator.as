@@ -4,6 +4,7 @@ import com.mindscriptact.starlingtest.view.game.elements.CroshareImage;
 import com.mindscriptact.starlingUtils.easyShapes.EasyCircleImage;
 import com.mindscriptact.starlingUtils.easyShapes.EasyShapeImage;
 import com.mindscriptact.starlingUtils.easyShapes.EasySquareImage;
+import com.mindscriptact.starlingUtils.easySprites.EasyBackgroundSprite;
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.IBitmapDrawable;
@@ -23,7 +24,7 @@ import starling.textures.TextureAtlas;
 
 /**
  * TODO:CLASS COMMENT
- * @author Raimundas Banevicius (raima156@yahoo.com)
+ * @author Raimundas Banevicius (http://mvcexpress.org)
  */
 public class GameMediator extends Mediator {
 	
@@ -41,25 +42,9 @@ public class GameMediator extends Mediator {
 	public const santaAtlasDefinitions:Class;
 	
 	override public function onRegister():void {
-		//var quadTest:Quad = new Quad(200, 200);
-		//quadTest.setVertexColor(0, 0x000000);
-		//quadTest.setVertexColor(1, 0x00FF00);
-		//quadTest.setVertexColor(2, 0xFF0000);
-		//quadTest.setVertexColor(3, 0x0000FF);
-		//view.addChild(quadTest);
 		
-		var image1:Image = new Image(PicResources.getBitmap(PicResources.DIRT_ID));
-		view.addChild(image1);
-		var image2:Image = new Image(PicResources.getBitmap(PicResources.DIRT_ID));
-		image2.x = image2.width;
-		view.addChild(image2);
-		var image3:Image = new Image(PicResources.getBitmap(PicResources.DIRT_ID));
-		image3.y = image3.height;
-		view.addChild(image3);
-		var image4:Image = new Image(PicResources.getBitmap(PicResources.DIRT_ID));
-		image4.x = image4.width;
-		image4.y = image4.height;
-		view.addChild(image4);
+		var bg:EasyBackgroundSprite = new EasyBackgroundSprite(PicResources.getBitmap(PicResources.DIRT_ID), 3, 2);
+		view.addChild(bg);
 		
 		var santaBD:Bitmap = new santaAtlasBitmap();
 		var texture:Texture = Texture.fromBitmap(santaBD);

@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="bin\starlingTest.swf" />
     <movie fps="60" />
-    <movie width="1500" />
-    <movie height="600" />
+    <movie width="1800" />
+    <movie height="800" />
     <movie version="11" />
     <movie minorVersion="5" />
     <movie platform="Flash Player" />

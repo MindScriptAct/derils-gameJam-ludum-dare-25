@@ -32,7 +32,7 @@ public class StarlingTestModule extends ModuleCore {
 		
 		commandMap.execute(SetUpViewCommand);
 		
-		var mStarling:Starling = new Starling(Game, main.stage, new Rectangle(0, 0, 800, 600));
+		var mStarling:Starling = new Starling(Game, main.stage, new Rectangle(0, 0, 1280, 720));
 		//var mStarling:Starling = new Starling(Game, main.stage, new Rectangle(0, 0, 800, 600),null, Context3DRenderMode.SOFTWARE);
 		mediatorMap.mediateWith(mStarling, StarlingMediator);
 		

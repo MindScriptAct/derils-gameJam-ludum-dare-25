@@ -6,7 +6,7 @@ import starling.events.Event;
 
 /**
  * TODO:CLASS COMMENT
- * @author Raimundas Banevicius (raima156@yahoo.com)
+ * @author Raimundas Banevicius (http://mvcexpress.org)
  */
 public class StarlingMediator extends Mediator {
 	

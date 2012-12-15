@@ -4,7 +4,7 @@ import starling.textures.Texture;
 
 /**
  * COMMENT
- * @author Raimundas Banevicius (raima156@yahoo.com)
+ * @author Raimundas Banevicius (http://mvcexpress.org)
  */
 public class CroshareImage extends EasyShapeImage {
 	static private var textureCash:Texture;
