@@ -23,6 +23,7 @@ public class Process {
 	static public const TIMER_PROCESS:int = 1;
 	
 	mvcExpressLive var type:int;
+	mvcExpressLive var processId:String;
 	
 	mvcExpressLive var totalFrameSkip:int = 0;
 	mvcExpressLive var currentFrameSkip:int = 0;
@@ -41,6 +42,7 @@ public class Process {
 	private var handlerVoRegistry:Vector.<HandlerVO> = new Vector.<HandlerVO>();
 	
 	private var head:Task;
+	private var tail:Task;
 	
 	private var _isRunning:Boolean = false;
 	
@@ -67,16 +69,40 @@ public class Process {
 	}
 	
 	//----------------------------------
+	//     Process managment
+	//----------------------------------
+	
+	public function startProcess():void {
+		use namespace mvcExpressLive;
+		processMap.startProcessObject(this);
+	}
+	
+	public function stopProcess():void {
+		use namespace mvcExpressLive;
+		processMap.stopProcessObject(this);
+	}
+	
+	//----------------------------------
 	//     task managment
 	//----------------------------------
 	
-	public function addHeadTask(headTask:Task):void {
+	protected function addHeadTask(headTask:Task):void {
 		if (head) {
 			throw Error("Head is already added.");
 		}
 		// TODO: check if task is mapped.
 		
 		head = headTask;
+		tail = headTask;
+	}
+	
+	protected function addTask(task:Task):void {
+		if (!head) {
+			addHeadTask(task);
+		} else {
+			tail.addTask(task);
+			tail = task;
+		}
 	}
 	
 	public function mapTask(taskClass:Class, name:String = ""):Task {
@@ -106,6 +132,7 @@ public class Process {
 	
 	mvcExpressLive function remove():void {
 		use namespace mvcExpressLive;
+		processId = null;
 		onRemove();
 		// remove all handlers
 		removeAllHandlers();
