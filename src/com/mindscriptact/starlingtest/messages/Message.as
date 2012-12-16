@@ -24,6 +24,8 @@ public class Message {
 	
 	static public const SHOW_STAGE_DONE:String = "showStageDone";
 	static public const HIDE_STAGE_DONE:String = "hideStageDone";
+	
+	static public const REMOVE_COIN_ITEM:String = "removeCoinItem";
 
 }
 }

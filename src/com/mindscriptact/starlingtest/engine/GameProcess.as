@@ -1,6 +1,7 @@
 package com.mindscriptact.starlingtest.engine {
 import com.mindscriptact.starlingtest.engine.tasks.CalculateBankTimerTask;
 import com.mindscriptact.starlingtest.engine.tasks.CalculateEnemyTimerTask;
+import com.mindscriptact.starlingtest.engine.tasks.CoinImageTweenTask;
 import com.mindscriptact.starlingtest.engine.tasks.ColideWithEnemies;
 import com.mindscriptact.starlingtest.engine.tasks.HeadTask;
 import com.mindscriptact.starlingtest.engine.tasks.MoveBanksterTask;
@@ -31,6 +32,8 @@ public class GameProcess extends Process {
 		
 		
 		
+		var tweenCoinItems:Task = this.mapTask(CoinImageTweenTask);
+		
 		var movecViewElements:Task = this.mapTask(MoveViewElementTask);
 		
 		
@@ -49,6 +52,7 @@ public class GameProcess extends Process {
 		this.addTask(moveBanksterTask);
 		this.addTask(moveEnemiesTask);
 		
+		this.addTask(tweenCoinItems);
 		this.addTask(movecViewElements);
 		
 		this.addTask(colideWithEnemies);

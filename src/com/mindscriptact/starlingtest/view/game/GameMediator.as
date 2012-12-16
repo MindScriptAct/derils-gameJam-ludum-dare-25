@@ -9,6 +9,7 @@ import com.mindscriptact.starlingtest.picLib.PicResources;
 import com.mindscriptact.starlingtest.view.game.elements.BankActionReadyImage;
 import com.mindscriptact.starlingtest.view.game.elements.CoinSprite;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
+import com.mindscriptact.starlingtest.view.game.elements.SingleCoinImage;
 import com.mindscriptact.starlingUtils.easySprites.EasyBackgroundSprite;
 import org.mvcexpress.mvc.Mediator;
 import starling.display.Image;
@@ -36,10 +37,13 @@ public class GameMediator extends Mediator {
 	public var enemyImages:Vector.<EnemySprite> = new Vector.<EnemySprite>();
 	[Provide(name="enemie_bar_components")]
 	public var enemyCoinImages:Vector.<CoinSprite> = new Vector.<CoinSprite>();
+	[Provide(name="coin_items_components")]
+	public var coinItemImages:Vector.<SingleCoinImage> = new Vector.<SingleCoinImage>();
 	
 	public var bankster:Image;
 	
 	private var banksterReady:BankActionReadyImage;
+	private var gameItemHolder:Sprite;
 	
 	[Embed(source="/pics/santa.xml",mimeType="application/octet-stream")]
 	public const santaAtlasDefinitions:Class;
@@ -52,6 +56,9 @@ public class GameMediator extends Mediator {
 		// TODO mediate...
 		gamePlayerHolder = new Sprite();
 		view.addChild(gamePlayerHolder);
+		
+		gameItemHolder = new Sprite();
+		view.addChild(gameItemHolder);
 		
 		bankster = new Image(PicResources.getTexture(PicResources.BANKSTER_ID));
 		gamePlayerHolder.addChild(bankster);
@@ -71,10 +78,23 @@ public class GameMediator extends Mediator {
 		
 		addHandler(Message.SHOW_BANKSTER_READY_RANGE, handleShowBanksterReady);
 		addHandler(Message.HIDE_BANKSTER_READY_RANGE, handleHideBanksterReady);
+		
+		addHandler(Message.REMOVE_COIN_ITEM, handleRemoveCoinItem);
 	
 		//var enemy:EnemySprite = new EnemySprite(0, EnemyTypes.OCCUPYER);
 		//gamePlayerHolder.addChildAt(enemy, 0);
 	
+	}
+	
+	private function handleRemoveCoinItem(coinImage:Image):void {
+		for (var i:int = 0; i < coinItemImages.length; i++) {
+			if (coinItemImages[i] == coinImage) {
+				gameItemHolder.removeChild(coinImage);
+				coinImage.dispose();
+				coinItemImages.splice(i, 1);
+				break;
+			}
+		}
 	}
 	
 	public function handleChangeEnemy(enemySpownVo:EnemySpawnParamsVo):void {
@@ -93,9 +113,19 @@ public class GameMediator extends Mediator {
 		for (var i:int = 0; i < enemyCoinImages.length; i++) {
 			if (enemyCoinImages[i].enemyId == enemySpownVo.id) {
 				enemyCoinImages[i].changeAmmount(enemySpownVo.totalCoins);
+				spawnCoin(enemyImages[i].x, enemyImages[i].y);
 				break;
 			}
 		}
+	}
+	
+	private function spawnCoin(x:Number, y:Number):void {
+		var coinImage:SingleCoinImage = new SingleCoinImage(PicResources.getTexture(PicResources.COIN_1_ID));
+		coinImage.x = x;
+		coinImage.y = y;
+		gameItemHolder.addChild(coinImage);
+		coinItemImages.push(coinImage);
+	
 	}
 	
 	private function handleAddEnemy(enemySpawnVo:EnemySpawnParamsVo):void {
@@ -123,6 +153,12 @@ public class GameMediator extends Mediator {
 			var tempImage:CoinSprite = enemyCoinImages.pop();
 			gamePlayerHolder.removeChild(tempImage);
 			tempImage.dispose();
+		}
+		
+		for (var i:int = 0; i < coinItemImages.length; i++) {
+			gameItemHolder.removeChild(coinItemImages[i]);
+			coinItemImages[i].dispose();
+			coinItemImages.splice(i, 1);
 		}
 	}
 	
