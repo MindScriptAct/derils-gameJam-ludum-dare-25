@@ -25,6 +25,9 @@ public class PicResources {
 	
 	static public const BEGGER_ID:int = elementCount++;
 	static public const RIVAL_ID:int = elementCount++;
+	static public const COIN_1_ID:int = elementCount++;
+	static public const COIN_2_ID:int = elementCount++;
+	static public const COIN_3_ID:int = elementCount++;
 	
 	static private var instance:PicResources;
 	static private var textureCash:Dictionary = new Dictionary();
@@ -50,6 +53,9 @@ public class PicResources {
 	
 	[Embed(source="/pics/rivalBanker.png",mimeType="image/png")]
 	static private var RivalBankerClass:Class;
+	
+	[Embed(source="/pics/coin.png",mimeType="image/png")]
+	static private var CoinClass:Class;	
 	
 	static public function getTexture(id:int):Texture {
 		if (!instance) {
@@ -111,6 +117,11 @@ public class PicResources {
 				break;
 			case RIVAL_ID: 
 				pic = new RivalBankerClass();
+				break;
+			case COIN_1_ID: 
+			case COIN_2_ID: 
+			case COIN_3_ID: 
+				pic = new CoinClass();				
 				break;
 			default: 
 		}
