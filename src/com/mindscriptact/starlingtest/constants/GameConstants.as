@@ -21,6 +21,8 @@ public class GameConstants {
 	static public const ENEMY_MOVE_SPEED_MODIFIER:int = 3;
 	
 	static public const ENEMY_MENEY:int = 30;
+	
+	static public const ENEMY_TURN_OCUPY_TIME:int = 2000;
 
 }
 }

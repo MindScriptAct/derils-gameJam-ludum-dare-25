@@ -2,6 +2,7 @@ package com.mindscriptact.starlingtest.model.enemies {
 import com.mindscriptact.starlingtest.messages.DataMessage;
 import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import flash.geom.Point;
+import flash.utils.getTimer;
 import org.mvcexpress.mvc.Proxy;
 
 /**
@@ -64,6 +65,15 @@ public class EnemyProxy extends Proxy {
 				enemies[i].goDown = goDown;
 				sendMessage(DataMessage.ENEMY_TYPE_CHANGE, new EnemySpawnParamsVo(id, newEnemyType));
 				break;
+			}
+		}
+	}
+	
+	public function setTypeChangeTimer(id:int, changeTime:int):void {
+		for (var i:int = 0; i < enemies.length; i++) {
+			if (enemies[i].id == id) {
+				enemies[i].timeRemaining = changeTime;
+				enemies[i].lastTimer = getTimer();
 			}
 		}
 	}

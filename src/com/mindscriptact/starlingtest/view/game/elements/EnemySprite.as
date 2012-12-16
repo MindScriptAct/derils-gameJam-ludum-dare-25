@@ -44,6 +44,9 @@ public class EnemySprite extends Sprite {
 			case EnemyTypes.COMMONER: 
 				enemyImage = new Image(PicResources.getTexture(PicResources.ENEMY_COMONER_ID));
 				break;
+			case EnemyTypes.ANGRY_COMMONER: 
+				enemyImage = new Image(PicResources.getTexture(PicResources.ENEMY_ANGRY_COMONER_ID));
+				break;				
 			case EnemyTypes.OCCUPYER: 
 				enemyImage = new Image(PicResources.getTexture(PicResources.ENEMY_OCCUPYER_ID));
 				break;

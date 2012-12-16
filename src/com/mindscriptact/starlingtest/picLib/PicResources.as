@@ -17,6 +17,7 @@ public class PicResources {
 	static public const ENEMY_MONEY_BORDER_ID:int = elementCount++;
 	
 	static public const ENEMY_COMONER_ID:int = elementCount++;
+	static public const ENEMY_ANGRY_COMONER_ID:int = elementCount++;
 	static public const ENEMY_OCCUPYER_ID:int = elementCount++;
 	
 	static private var instance:PicResources;
@@ -36,9 +37,13 @@ public class PicResources {
 				case ENEMY_COMONER_ID: 
 					textureCash[id] = EasyTextureGenerator.rectangle(64, 64, 0xFFFF00, -1, 0);
 					break;
+				case ENEMY_ANGRY_COMONER_ID: 
+					textureCash[id] = EasyTextureGenerator.rectangle(64, 64, 0xFF8000, -1, 0);
+					break;
 				case ENEMY_OCCUPYER_ID: 
 					textureCash[id] = EasyTextureGenerator.rectangle(64, 64, 0xFF0000, -1, 0);
 					break;
+				
 				case ENEMY_MONEY_BAR_ID: 
 					textureCash[id] = EasyTextureGenerator.rectangle(50, 10, 0xFFD700, -1, 0);
 					break;

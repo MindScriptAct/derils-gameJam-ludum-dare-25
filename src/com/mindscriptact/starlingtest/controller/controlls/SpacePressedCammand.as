@@ -5,6 +5,7 @@ import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.bankster.BanksterProxy;
 import com.mindscriptact.starlingtest.model.enemies.EnemyProxy;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
+import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import com.mindscriptact.starlingtest.model.gui.GuiProxy;
 import flash.geom.Point;
 import org.mvcexpress.mvc.PooledCommand;
@@ -43,7 +44,8 @@ public class SpacePressedCammand extends PooledCommand {
 						collectedMoney += enemyVo.curentMoney;
 						enemyVo.curentMoney = 0;
 						if (enemyVo.enemyType == EnemyTypes.COMMONER) {
-							enemyProxy.changeEnemyType(enemyVo.id, EnemyTypes.OCCUPYER, banksterPosition.y < enemyVo.position.y);
+							enemyProxy.changeEnemyType(enemyVo.id, EnemyTypes.ANGRY_COMMONER, banksterPosition.y < enemyVo.position.y);
+							enemyProxy.setTypeChangeTimer(enemyVo.id, GameConstants.ENEMY_TURN_OCUPY_TIME);
 						}
 					}
 				}

@@ -23,6 +23,8 @@ public class EnemyVO {
 	private var _totalMoney:int;
 	private var _curentMoney:int;
 	public var moneyPerc:Number;
+	public var timeRemaining:int;
+	public var lastTimer:uint;
 	
 	public function get totalMoney():int {
 		return _totalMoney;

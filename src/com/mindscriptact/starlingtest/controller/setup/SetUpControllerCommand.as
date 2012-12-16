@@ -1,6 +1,7 @@
 package com.mindscriptact.starlingtest.controller.setup {
 import com.mindscriptact.starlingtest.controller.controlls.SpacePressedCammand;
 import com.mindscriptact.starlingtest.controller.enemies.AddCommonerCammand;
+import com.mindscriptact.starlingtest.controller.enemies.ChangeEnemyTypeCommand;
 import com.mindscriptact.starlingtest.controller.game.StartGameCammend;
 import com.mindscriptact.starlingtest.messages.Message;
 import org.mvcexpress.mvc.Command;
@@ -18,6 +19,7 @@ public class SetUpControllerCommand extends Command {
 		commandMap.map(Message.START_GAME, StartGameCammend);
 		commandMap.map(Message.ADD_COMMONER, AddCommonerCammand);
 		commandMap.map(Message.SPACE_PRESS, SpacePressedCammand);
+		commandMap.map(Message.CHANGE_ENEMY_TYPE, ChangeEnemyTypeCommand);
 	}
 
 }

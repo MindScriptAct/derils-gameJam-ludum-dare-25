@@ -17,10 +17,18 @@ public class MoveEnemiesTask extends Task {
 		
 		for (var i:int = 0; i < enemies.length; i++) {
 			var enemyVo:EnemyVO = enemies[i];
-			if (enemyVo.goRight) {
-				enemyVo.position.x += enemyVo.moveSpeed;
+			if (enemyVo.enemyType == EnemyTypes.ANGRY_COMMONER) {
+				if (enemyVo.goRight) {
+					enemyVo.position.x += enemyVo.moveSpeed / 2;
+				} else {
+					enemyVo.position.x -= enemyVo.moveSpeed / 2;
+				}
 			} else {
-				enemyVo.position.x -= enemyVo.moveSpeed;
+				if (enemyVo.goRight) {
+					enemyVo.position.x += enemyVo.moveSpeed;
+				} else {
+					enemyVo.position.x -= enemyVo.moveSpeed;
+				}
 			}
 			
 			if (enemyVo.enemyType == EnemyTypes.OCCUPYER) {
