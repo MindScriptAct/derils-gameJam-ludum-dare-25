@@ -1,8 +1,6 @@
 package com.mindscriptact.starlingtest.view.game.elements {
 import com.mindscriptact.starlingtest.constants.EnemyTypes;
-import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.picLib.PicResources;
-import com.mindscriptact.starlingUtils.easyShapes.EasyRectangeImage;
 import starling.display.Image;
 import starling.display.Sprite;
 
@@ -11,7 +9,6 @@ import starling.display.Sprite;
  * @author Raimundas Banevicius (http://mvcexpress.org)
  */
 public class EnemySprite extends Sprite {
-	private var moneyRect:Image;
 	private var enemyImage:Image;
 	
 	public var enemyId:int;
@@ -20,21 +17,13 @@ public class EnemySprite extends Sprite {
 		this.enemyId = enemyId;
 		createEnemyPic(enemyType);
 	
-		//moneyRect = new Image(PicResources.getTexture(PicResources.ENEMY_MONEY_BAR_ID));
-		//this.addChild(moneyRect);
-		//moneyRect.x = -25;
-		//moneyRect.y = -GameConstants.ENEMY_SIZE + 10;
-		//
-		//var moneyRectFrame:Image = new Image(PicResources.getTexture(PicResources.ENEMY_MONEY_BORDER_ID));
-		//this.addChild(moneyRectFrame);
-		//moneyRectFrame.x = -25;
-		//moneyRectFrame.y = -GameConstants.ENEMY_SIZE + 10;
-	
 	}
 	
 	public function changeType(enemyType:int):void {
 		if (enemyImage) {
+			enemyImage.dispose();
 			this.removeChild(enemyImage);
+			enemyImage = null;
 		}
 		createEnemyPic(enemyType);
 	}
@@ -46,7 +35,7 @@ public class EnemySprite extends Sprite {
 				break;
 			case EnemyTypes.ANGRY_COMMONER: 
 				enemyImage = new Image(PicResources.getTexture(PicResources.ENEMY_ANGRY_COMONER_ID));
-				break;				
+				break;
 			case EnemyTypes.OCCUPYER: 
 				enemyImage = new Image(PicResources.getTexture(PicResources.ENEMY_OCCUPYER_ID));
 				break;
@@ -59,10 +48,13 @@ public class EnemySprite extends Sprite {
 		enemyImage.pivotY = enemyImage.height >> 1;
 	
 	}
-
-	//public function showMoneyPerc(perc:Number):void {
-	//moneyRect.scaleX = perc;
-	//}
+	
+	override public function dispose():void {
+		this.removeChild(enemyImage);
+		enemyImage.dispose();
+		enemyImage = null;
+		super.dispose();
+	}
 
 }
 }

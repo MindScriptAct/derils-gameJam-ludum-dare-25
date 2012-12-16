@@ -64,7 +64,7 @@ public class GameProcess extends Process {
 		this.stopProcess();
 	}
 	
-	private function handleStartGame(level:int):void {
+	private function handleStartGame(blank:Object):void {
 		this.startProcess();
 	}
 	

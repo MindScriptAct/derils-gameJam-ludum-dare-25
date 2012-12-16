@@ -55,8 +55,11 @@ public class GameMediator extends Mediator {
 		
 		addHandler(DataMessage.ENEMY_ADDED, handleAddEnemy);
 		addHandler(DataMessage.ENEMY_TYPE_CHANGE, handleChangeEnemy);
+		addHandler(DataMessage.REMOVE_ALL_ENEMIES, handleRemoveAllEnemies);
 	
 	}
+	
+
 	
 	public function handleChangeEnemy(enemySpownVo:EnemySpawnParamsVo):void {
 		for (var i:int = 0; i < enemyImages.length; i++) {
@@ -68,6 +71,7 @@ public class GameMediator extends Mediator {
 	}
 	
 	private function handleAddEnemy(enemySpawnVo:EnemySpawnParamsVo):void {
+		//TODO: add Pooling
 		var enemy:EnemySprite = new EnemySprite(enemySpawnVo.id, enemySpawnVo.enemyType);
 		gamePlayerHolder.addChildAt(enemy, 0);
 		enemy.x = -200;
@@ -83,6 +87,25 @@ public class GameMediator extends Mediator {
 		enemyBarBorderImages.push(moneyRectBorder);
 		moneyRectBorder.x = -200;
 	
+	}
+	
+	private function handleRemoveAllEnemies(blank:Object):void {
+		//TODO: add Pooling
+		while (enemyImages.length) {
+			var enemyImage:EnemySprite = enemyImages.pop();
+			gamePlayerHolder.removeChild(enemyImage);
+			enemyImage.dispose();
+		}
+		while (enemyBarImages.length) {
+			var tempImage:Image = enemyBarImages.pop();
+			gamePlayerHolder.removeChild(tempImage);
+			tempImage.dispose();
+		}
+		while (enemyBarBorderImages.length) {
+			tempImage = enemyBarBorderImages.pop();
+			gamePlayerHolder.removeChild(tempImage);
+			tempImage.dispose();
+		}
 	}
 	
 	override public function onRemove():void {

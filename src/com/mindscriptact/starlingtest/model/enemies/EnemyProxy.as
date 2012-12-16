@@ -77,5 +77,13 @@ public class EnemyProxy extends Proxy {
 			}
 		}
 	}
+	
+	public function removeAll():void {
+		while (enemies.length) {
+			var enemyVo:EnemyVO = enemies.pop();
+			enemyVo.position = null;
+		}
+		sendMessage(DataMessage.REMOVE_ALL_ENEMIES);
+	}
 }
 }

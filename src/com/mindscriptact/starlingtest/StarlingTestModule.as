@@ -61,14 +61,13 @@ public class StarlingTestModule extends ModuleCore {
 		
 		mediatorMap.mediate(main);
 		
-		// TODO : remove
-		setTimeout(debugStartGame, 100);
+		setTimeout(initProcess, 100);
 	
 	}
 	
-	private function debugStartGame():void {
+	private function initProcess():void {
 		commandMap.execute(SetUpProcessesCommand);
-		sendMessage(Message.START_GAME, 1);
+		//sendMessage(Message.START_GAME);
 	}
 	
 	override protected function onDispose():void {

@@ -1,4 +1,5 @@
 package com.mindscriptact.starlingtest.model.gui {
+import com.mindscriptact.starlingtest.constants.GameScreens;
 import com.mindscriptact.starlingtest.messages.DataMessage;
 import flash.utils.getTimer;
 import org.mvcexpress.mvc.Proxy;
@@ -8,6 +9,9 @@ import org.mvcexpress.mvc.Proxy;
  * @author Raimundas Banevicius (http://mvcexpress.org)
  */
 public class GuiProxy extends Proxy {
+	
+	
+	private var screenId:String = GameScreens.START_SCREEN;
 	
 	private var bankTime:BankTimeVO = new BankTimeVO();
 	
@@ -61,6 +65,15 @@ public class GuiProxy extends Proxy {
 	public function addMoney(money:int):void {
 		this.currentMoney += money
 		sendMessage(DataMessage.MONEY_CHANGED);
+	}
+	
+	public function getScreenId():String {
+		return screenId;
+	}
+	
+	public function setScreenId(newScreenId:String):void {
+		this.screenId = newScreenId;
+		sendMessage(DataMessage.GUI_SCREEN_CHANGED, this.screenId);
 	}
 
 }

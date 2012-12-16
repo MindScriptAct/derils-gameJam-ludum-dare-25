@@ -3,7 +3,6 @@ import com.mindscriptact.starlingtest.constants.EnemyTypes;
 import com.mindscriptact.starlingtest.controller.enemies.params.EnemyTypeChangeParamsVo;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
-import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import flash.utils.getTimer;
 import org.mvcexpress.live.Task;
 
