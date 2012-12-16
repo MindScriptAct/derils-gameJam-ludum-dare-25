@@ -2,6 +2,7 @@ package com.mindscriptact.starlingtest.engine.tasks {
 import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
 import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
+import com.mindscriptact.starlingtest.view.game.elements.BanksterSprite;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import flash.geom.Point;
 import org.mvcexpress.live.Task;
@@ -17,7 +18,7 @@ public class MoveViewElementTask extends Task {
 	public var curentPosition:Point;
 	
 	[Inject(name="bankster_component")]
-	public var bankster:BanksterImage;
+	public var bankster:BanksterSprite;
 	
 	[Inject(name="enemies_data")]
 	public var enemies:Vector.<EnemyVO>
@@ -46,7 +47,7 @@ public class MoveViewElementTask extends Task {
 			enemyBarImages[i].scaleX = enemies[i].moneyPerc;
 			
 			enemyBarBorderImages[i].x = enemies[i].position.x - 25;
-			enemyBarBorderImages[i].y = enemies[i].position.y - GameConstants.ENEMY_SIZE + 10;			
+			enemyBarBorderImages[i].y = enemies[i].position.y - GameConstants.ENEMY_SIZE + 10;
 			
 		}
 	}

@@ -2,6 +2,7 @@ package com.mindscriptact.starlingtest.view.game {
 import com.mindscriptact.starlingtest.messages.DataMessage;
 import com.mindscriptact.starlingtest.picLib.PicResources;
 import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
+import com.mindscriptact.starlingtest.view.game.elements.BanksterSprite;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import com.mindscriptact.starlingUtils.easySprites.EasyBackgroundSprite;
 import org.mvcexpress.mvc.Mediator;
@@ -33,7 +34,7 @@ public class GameMediator extends Mediator {
 	[Provide(name="enemie_bar_image_components")]
 	public var enemyBarBorderImages:Vector.<Image> = new Vector.<Image>();
 	
-	public var bankster:BanksterImage;
+	public var bankster:BanksterSprite;
 	
 	[Embed(source="/pics/santa.xml",mimeType="application/octet-stream")]
 	public const santaAtlasDefinitions:Class;
@@ -47,7 +48,7 @@ public class GameMediator extends Mediator {
 		gamePlayerHolder = new Sprite();
 		view.addChild(gamePlayerHolder);
 		
-		bankster = new BanksterImage();
+		bankster = new BanksterSprite();
 		gamePlayerHolder.addChild(bankster);
 		
 		processMap.provide(bankster, "bankster_component");

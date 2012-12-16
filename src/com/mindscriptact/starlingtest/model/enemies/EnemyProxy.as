@@ -39,6 +39,27 @@ public class EnemyProxy extends Proxy {
 	override protected function onRemove():void {
 	
 	}
-
+	
+	public function removeMoneyInRangeOfPoint(position:Point, rangePowered:int, ammount:int):int {
+		var totalMoneyRemoved:int = 0;
+		for (var i:int = 0; i < enemies.length; i++) {
+			var enemyVo:EnemyVO = enemies[i]
+			var dx:Number = position.x - enemyVo.position.x;
+			var dy:Number = position.y - enemyVo.position.y;
+			var distPow:int = dx * dx + dy * dy;
+			if (distPow < rangePowered) {
+				if (enemyVo.curentMoney > 0) {
+					if (enemyVo.curentMoney > ammount) {
+						totalMoneyRemoved += ammount;
+						enemyVo.curentMoney -= ammount;
+					} else {
+						totalMoneyRemoved += enemyVo.curentMoney;
+						enemyVo.curentMoney = 0;
+					}
+				}
+			}
+		}
+		return totalMoneyRemoved;
+	}
 }
 }

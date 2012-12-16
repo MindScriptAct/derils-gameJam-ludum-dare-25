@@ -8,14 +8,13 @@ import org.mvcexpress.mvc.Proxy;
  */
 public class BanksterProxy extends Proxy {
 	
-	[Provide(name="bankster_Position")]
-	public var curentPosition:Point = new Point();
+	private var curentPosition:Point = new Point();
 	
 	public function BanksterProxy() {
 	}
 	
 	override protected function onRegister():void {
-	
+		processMap.provide(curentPosition, "bankster_Position");
 	}
 	
 	override protected function onRemove():void {
@@ -25,6 +24,10 @@ public class BanksterProxy extends Proxy {
 	public function teleportBankster(xPos:int, yPos:int):void {
 		curentPosition.x = xPos;
 		curentPosition.y = yPos;
+	}
+	
+	public function getCurrentPosition():Point {
+		return new Point(curentPosition.x, curentPosition.y);
 	}
 }
 }

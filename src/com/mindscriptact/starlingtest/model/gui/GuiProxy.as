@@ -11,8 +11,9 @@ public class GuiProxy extends Proxy {
 	
 	private var bankTime:BankTimeVO = new BankTimeVO();
 	
-	private var money:int = 0;
-	public var neededMoney:int;
+	private var currentMoney:int = 0;
+	
+	private var neededMoney:int;
 	
 	public function GuiProxy() {
 	
@@ -40,7 +41,7 @@ public class GuiProxy extends Proxy {
 	}
 	
 	public function setMoney(number:int):void {
-		money = 0;
+		currentMoney = 0;
 		sendMessage(DataMessage.MONEY_CHANGED);
 	}
 	
@@ -50,11 +51,16 @@ public class GuiProxy extends Proxy {
 	}
 	
 	public function getMoney():int {
-		return money;
+		return currentMoney;
 	}
 	
 	public function getNeededMoney():int {
 		return neededMoney;
+	}
+	
+	public function addMoney(money:int):void {
+		this.currentMoney += money
+		sendMessage(DataMessage.MONEY_CHANGED);
 	}
 
 }
