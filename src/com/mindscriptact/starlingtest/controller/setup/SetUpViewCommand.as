@@ -26,8 +26,8 @@ public class SetUpViewCommand extends Command {
 		Starling, StarlingMediator;
 		
 		mediatorMap.map(Main, MainMediator);
-		mediatorMap.map(StartScreen, StartScreenMediator);
-		mediatorMap.map(GameOverScreen, GameOverScreenMediator);
+		mediatorMap.map(StartScreenSPR, StartScreenMediator);
+		mediatorMap.map(GameOverScreenSPR, GameOverScreenMediator);
 		
 		mediatorMap.map(Game, GameMediator);
 		

@@ -18,8 +18,8 @@ import org.mvcexpress.mvc.Mediator;
  */
 public class MainMediator extends Mediator {
 	private var antialiasing:HUISlider;
-	private var startScreen:StartScreen;
-	private var gameOverScreen:GameOverScreen;
+	private var startScreen:StartScreenSPR;
+	private var gameOverScreen:GameOverScreenSPR;
 	
 	[Inject]
 	public var view:Main;
@@ -63,13 +63,13 @@ public class MainMediator extends Mediator {
 	}
 	
 	private function addStartScreen():void {
-		startScreen = new StartScreen();
+		startScreen = new StartScreenSPR();
 		view.addChild(startScreen);
 		mediatorMap.mediate(startScreen);
 	}
 	
 	private function addGameOverScreen():void {
-		gameOverScreen = new GameOverScreen();
+		gameOverScreen = new GameOverScreenSPR();
 		view.addChild(gameOverScreen);
 		mediatorMap.mediate(gameOverScreen);
 		gameOverScreen.alpha = 0;

@@ -97,6 +97,10 @@ public class GuiProxy extends Proxy {
 	public function isNeededMoneyCollected():Boolean {
 		return (currentMoney >= neededMoney);
 	}
+	
+	public function getTotalScore():int {
+		return totalCollectedMoney;
+	}
 
 }
 }
