@@ -21,8 +21,9 @@ public class EnterPressedCommand extends Command {
 		} else if (screenId == GameScreens.GAMEOVER_SCREEN) {
 			sendMessage(Message.RESET_GAME);
 		} else if (screenId == GameScreens.GAME_SCREEN) {
-			throw Error("");
-			
+			if (guiProxy.isNeededMoneyCollected()) {
+				sendMessage(Message.START_STAGE, guiProxy.getStageId() + 1);
+			}
 		}
 	}
 

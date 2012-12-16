@@ -19,6 +19,7 @@ public class GuiMediator extends Mediator {
 		processMap.provide(view, "gui_view");
 		
 		addHandler(DataMessage.MONEY_CHANGED, handleMoneyChange);
+		addHandler(DataMessage.GUI_STAGE_CHANGED, handleStageChange);
 	}
 	
 	override public function onRemove():void {
@@ -27,6 +28,10 @@ public class GuiMediator extends Mediator {
 	
 	private function handleMoneyChange(blank:Object):void {
 		view.showMoney(guiProxy.getMoney(), guiProxy.getNeededMoney());
+	}
+	
+	private function handleStageChange(stageId:int):void {
+		view.showStage(stageId);
 	}
 }
 }

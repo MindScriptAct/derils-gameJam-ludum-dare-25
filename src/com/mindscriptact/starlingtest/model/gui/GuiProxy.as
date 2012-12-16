@@ -10,8 +10,9 @@ import org.mvcexpress.mvc.Proxy;
  */
 public class GuiProxy extends Proxy {
 	
-	
 	private var screenId:String = GameScreens.START_SCREEN;
+	
+	private var stageId:int;
 	
 	private var bankTime:BankTimeVO = new BankTimeVO();
 	
@@ -74,6 +75,19 @@ public class GuiProxy extends Proxy {
 	public function setScreenId(newScreenId:String):void {
 		this.screenId = newScreenId;
 		sendMessage(DataMessage.GUI_SCREEN_CHANGED, this.screenId);
+	}
+	
+	public function getStageId():int {
+		return stageId;
+	}
+	
+	public function setStageId(value:int):void {
+		this.stageId = value;
+		sendMessage(DataMessage.GUI_STAGE_CHANGED, stageId);
+	}
+	
+	public function isNeededMoneyCollected():Boolean {
+		return (currentMoney >= neededMoney);
 	}
 
 }

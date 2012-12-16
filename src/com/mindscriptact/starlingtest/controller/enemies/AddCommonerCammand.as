@@ -17,25 +17,27 @@ public class AddCommonerCammand extends PooledCommand {
 	
 	public function execute(count:int):void {
 		
-		var goRight:Boolean = Math.random() > 0.5;
-		var goDown:Boolean = Math.random() > 0.5;
-		
-		var position:Point = new Point();
-		
-		if (goRight) {
-			position.x = -GameConstants.ENEMY_SIZE;
-		} else {
-			position.x = GameConstants.GAME_WIDTH + GameConstants.ENEMY_SIZE;
+		for (var i:int = 0; i < count; i++) {
+			var goRight:Boolean = Math.random() > 0.5;
+			var goDown:Boolean = Math.random() > 0.5;
+			
+			var position:Point = new Point();
+			
+			if (goRight) {
+				position.x = -GameConstants.ENEMY_SIZE;
+			} else {
+				position.x = GameConstants.GAME_WIDTH + GameConstants.ENEMY_SIZE;
+			}
+			
+			var moveSpeed:Number = GameConstants.ENEMY_MOVE_SPEED_BASE;
+			moveSpeed += Math.random() * GameConstants.ENEMY_MOVE_SPEED_MODIFIER;
+			
+			var totalMoney:int = GameConstants.ENEMY_MENEY;
+			
+			position.y = Math.floor(Math.random() * (GameConstants.GAME_HEIGHT - GameConstants.ENEMY_SIZE * 2)) + GameConstants.ENEMY_SIZE;
+			
+			enemyProxy.addEnemy(EnemyTypes.COMMONER, position, goRight, goDown, moveSpeed, totalMoney);
 		}
-		
-		var moveSpeed:Number = GameConstants.ENEMY_MOVE_SPEED_BASE;
-		moveSpeed += Math.random() * GameConstants.ENEMY_MOVE_SPEED_MODIFIER;
-		
-		var totalMoney:int = GameConstants.ENEMY_MENEY;
-		
-		position.y = Math.floor(Math.random() * (GameConstants.GAME_HEIGHT - GameConstants.ENEMY_SIZE * 2)) + GameConstants.ENEMY_SIZE;
-		
-		enemyProxy.addEnemy(EnemyTypes.COMMONER, position, goRight, goDown, moveSpeed, totalMoney);
 	}
 
 }

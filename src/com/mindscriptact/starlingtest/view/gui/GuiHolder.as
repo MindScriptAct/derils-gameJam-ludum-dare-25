@@ -20,12 +20,15 @@ public class GuiHolder extends Sprite {
 	private var cashText:TextField;
 	private var cashNeedAmmount:Shape;
 	private var capitalistFarmat24:TextFormat;
-	;
+	private var stageText:TextField;
+	private var capitalistFarmat24_left:TextFormat;
+	private var capitalistFarmat10:TextFormat;
 	
 	public function GuiHolder() {
 		
 		capitalistFarmat24 = new TextFormat('myBoldVerdana', 24, 0xFFFFFF, true, null, null, null, null, TextFormatAlign.CENTER);
-		var capitalistFarmat10:TextFormat = new TextFormat('myBoldVerdana', 14, 0x0000FF, true, null, null, null, null, TextFormatAlign.CENTER);
+		capitalistFarmat24_left = new TextFormat('myBoldVerdana', 24, 0xFFFFFF, true, null, null, null, null, TextFormatAlign.LEFT);
+		capitalistFarmat10 = new TextFormat('myBoldVerdana', 14, 0x0000FF, true, null, null, null, null, TextFormatAlign.CENTER);
 		
 		//var bankProgressBg:Shape = new Shape();
 		//bankProgressBg.graphics.beginFill(0xFFFFFF, 0.1);
@@ -71,7 +74,6 @@ public class GuiHolder extends Sprite {
 		bankText.y = bankProgressDone.y;
 		bankText.width = bankProgressDone.width;
 		bankText.height = bankProgressDone.height;
-		;
 		bankText.visible = false;
 		
 		bankText.setTextFormat(capitalistFarmat10);
@@ -86,7 +88,6 @@ public class GuiHolder extends Sprite {
 		cashLabel.y = 8;
 		
 		cashLabel.setTextFormat(capitalistFarmat24);
-		
 		//
 		
 		cashNeedAmmount = new Shape();
@@ -117,6 +118,32 @@ public class GuiHolder extends Sprite {
 		cashText.width = 200;
 		
 		cashText.setTextFormat(capitalistFarmat24);
+		
+		//----------------------------------
+		//     stage
+		//----------------------------------
+		
+		var stageLabel:TextField = new TextField();
+		this.addChild(stageLabel);
+		stageLabel.text = "Stage:";
+		stageLabel.autoSize = TextFieldAutoSize.RIGHT;
+		stageLabel.embedFonts = true;
+		stageLabel.mouseEnabled = false;
+		stageLabel.x = 300;
+		stageLabel.y = 8;
+		
+		stageLabel.setTextFormat(capitalistFarmat24);
+		
+		stageText = new TextField();
+		this.addChild(stageText);
+		stageText.text = "0";
+		stageText.embedFonts = true;
+		stageText.mouseEnabled = false;
+		stageText.x = 310;
+		stageText.y = 8;
+		stageText.width = 200;
+		
+		stageText.setTextFormat(capitalistFarmat24_left);
 	}
 	
 	// TODO do this with messages...
@@ -138,6 +165,11 @@ public class GuiHolder extends Sprite {
 		cashText.setTextFormat(capitalistFarmat24);
 		//
 		cashNeedAmmount.scaleX = money / neededMoney;
+	}
+	
+	public function showStage(stageId:int):void {
+		stageText.text = "" + (stageId + 1);
+		cashText.setTextFormat(capitalistFarmat24_left);
 	}
 
 }

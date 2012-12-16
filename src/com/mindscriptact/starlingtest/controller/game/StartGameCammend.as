@@ -1,7 +1,6 @@
 package com.mindscriptact.starlingtest.controller.game {
-import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.constants.GameScreens;
-import com.mindscriptact.starlingtest.model.bankster.BanksterProxy;
+import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.gui.GuiProxy;
 import org.mvcexpress.mvc.Command;
 
@@ -11,8 +10,7 @@ import org.mvcexpress.mvc.Command;
  */
 public class StartGameCammend extends Command {
 	
-	[Inject]
-	public var banksterProxy:BanksterProxy;
+	;
 	
 	[Inject]
 	public var guiProxy:GuiProxy;
@@ -23,13 +21,7 @@ public class StartGameCammend extends Command {
 		if (screenId == GameScreens.START_SCREEN) {
 			guiProxy.setScreenId(GameScreens.GAME_SCREEN);
 			
-			banksterProxy.teleportBankster(GameConstants.GAME_WIDTH >> 1, GameConstants.GAME_HEIGHT >> 1);
-			
-			guiProxy.resetBankTimer();
-			guiProxy.setBankTotalTime(GameConstants.BANK_TIME);
-			
-			guiProxy.setMoney(0);
-			guiProxy.setNeededMoney(100);
+			sendMessage(Message.START_STAGE, 0);
 		}
 	}
 

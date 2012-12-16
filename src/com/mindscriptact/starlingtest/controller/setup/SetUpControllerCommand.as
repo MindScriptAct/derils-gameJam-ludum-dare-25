@@ -6,6 +6,7 @@ import com.mindscriptact.starlingtest.controller.enemies.ChangeEnemyTypeCommand;
 import com.mindscriptact.starlingtest.controller.game.GameOverCommand;
 import com.mindscriptact.starlingtest.controller.game.ResetGameCommand;
 import com.mindscriptact.starlingtest.controller.game.StartGameCammend;
+import com.mindscriptact.starlingtest.controller.game.StartStageCommand;
 import com.mindscriptact.starlingtest.messages.Message;
 import org.mvcexpress.mvc.Command;
 
@@ -20,6 +21,7 @@ public class SetUpControllerCommand extends Command {
 	
 	public function execute(blank:Object):void {
 		commandMap.map(Message.START_GAME, StartGameCammend);
+		commandMap.map(Message.START_STAGE, StartStageCommand);
 		commandMap.map(Message.GAME_OVER, GameOverCommand);
 		commandMap.map(Message.RESET_GAME, ResetGameCommand);
 		
