@@ -22,6 +22,9 @@ public class StartGameCammend extends Command {
 		guiProxy.resetBankTimer();
 		guiProxy.setBankTotalTime(GameConstants.BANK_TIME);
 		
+		guiProxy.setMoney(0);
+		guiProxy.setNeededMoney(100);
+		
 	}
 
 }

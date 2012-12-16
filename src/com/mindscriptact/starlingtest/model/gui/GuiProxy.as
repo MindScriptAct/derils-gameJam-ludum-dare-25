@@ -1,4 +1,5 @@
 package com.mindscriptact.starlingtest.model.gui {
+import com.mindscriptact.starlingtest.messages.DataMessage;
 import flash.utils.getTimer;
 import org.mvcexpress.mvc.Proxy;
 
@@ -9,6 +10,9 @@ import org.mvcexpress.mvc.Proxy;
 public class GuiProxy extends Proxy {
 	
 	private var bankTime:BankTimeVO = new BankTimeVO();
+	
+	private var money:int = 0;
+	public var neededMoney:int;
 	
 	public function GuiProxy() {
 	
@@ -33,6 +37,24 @@ public class GuiProxy extends Proxy {
 	
 	public function bankReady():Boolean {
 		return (bankTime.timePassed >= bankTime.totalTime);
+	}
+	
+	public function setMoney(number:int):void {
+		money = 0;
+		sendMessage(DataMessage.MONEY_CHANGED);
+	}
+	
+	public function setNeededMoney(neededMoney:int):void {
+		this.neededMoney = neededMoney;
+		sendMessage(DataMessage.MONEY_CHANGED);
+	}
+	
+	public function getMoney():int {
+		return money;
+	}
+	
+	public function getNeededMoney():int {
+		return neededMoney;
 	}
 
 }

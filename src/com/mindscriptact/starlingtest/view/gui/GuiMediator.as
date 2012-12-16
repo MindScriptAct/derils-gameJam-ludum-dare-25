@@ -1,4 +1,6 @@
-package com.mindscriptact.starlingtest.view.gui{
+package com.mindscriptact.starlingtest.view.gui {
+import com.mindscriptact.starlingtest.messages.DataMessage;
+import com.mindscriptact.starlingtest.model.gui.GuiProxy;
 import org.mvcexpress.mvc.Mediator;
 
 /**
@@ -10,16 +12,21 @@ public class GuiMediator extends Mediator {
 	[Inject]
 	public var view:GuiHolder;
 	
-	//[Inject]
-	//public var myProxy:MyProxy;
+	[Inject]
+	public var guiProxy:GuiProxy;
 	
 	override public function onRegister():void {
 		processMap.provide(view, "gui_view");
+		
+		addHandler(DataMessage.MONEY_CHANGED, handleMoneyChange);
 	}
 	
 	override public function onRemove():void {
-		
+	
 	}
 	
+	private function handleMoneyChange(blank:Object):void {
+		view.showMoney(guiProxy.getMoney(), guiProxy.getNeededMoney());
+	}
 }
 }

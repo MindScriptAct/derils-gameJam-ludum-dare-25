@@ -1,6 +1,5 @@
 package com.mindscriptact.starlingtest {
 import com.mindscriptact.mvcExpressLogger.MvcExpressLogger;
-import flash.display.LineScaleMode;
 import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
@@ -13,6 +12,36 @@ import utils.debug.Stats;
  */
 public class Main extends Sprite {
 	
+	//[Embed(source="/fonts/capitalist.ttf", //
+	//fontName="capitalistFont", //
+	//mimeType="application/x-font", //
+	//fontWeight="normal", //
+	//fontStyle="normal", //
+	//advancedAntiAliasing="true", //
+	//embedAsCFF="false")] //
+	//private var myEmbeddedFont:Class;
+
+	//[Embed(systemFont="Verdana", //
+		//fontName="myVerdana", //
+		//mimeType="application/x-font", //
+		//fontWeight="normal", //
+		//fontStyle="normal", //
+		//advancedAntiAliasing="true", //
+		//embedAsCFF="false")] //
+	//private var myVerdana:Class;
+	
+
+	[Embed(systemFont="Verdana", //
+		fontName="myBoldVerdana", //
+		mimeType="application/x-font", //
+		fontWeight="heavy", //
+		fontStyle="normal", //
+		advancedAntiAliasing="true", //
+		embedAsCFF="false")] //
+	private var myBoldVerdana:Class;	
+	
+	
+	
 	public function Main():void {
 		if (stage)
 			init();
@@ -21,6 +50,7 @@ public class Main extends Sprite {
 	}
 	
 	private function init(e:Event = null):void {
+		
 		removeEventListener(Event.ADDED_TO_STAGE, init);
 		// entry point
 		
