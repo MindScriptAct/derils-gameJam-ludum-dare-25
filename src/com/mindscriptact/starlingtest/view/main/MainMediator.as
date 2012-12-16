@@ -7,8 +7,6 @@ import com.mindscriptact.starlingtest.Main;
 import com.mindscriptact.starlingtest.messages.DataMessage;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.view.gui.GuiHolder;
-import com.mindscriptact.starlingtest.view.main.screens.GameOverScreen;
-import com.mindscriptact.starlingtest.view.main.screens.StartScreen;
 import flash.events.Event;
 import org.mvcexpress.mvc.Mediator;
 

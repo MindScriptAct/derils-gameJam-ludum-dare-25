@@ -11,6 +11,7 @@ import org.mvcexpress.mvc.Proxy;
  */
 public class GuiProxy extends Proxy {
 	
+	
 	private var screenId:String = GameScreens.START_SCREEN;
 	
 	private var stageId:int;
@@ -21,6 +22,8 @@ public class GuiProxy extends Proxy {
 	
 	private var neededMoney:int;
 	private var totalCollectedMoney:int;
+	
+	public var enableEnterTimeStamp:int;
 	
 	public function GuiProxy() {
 	

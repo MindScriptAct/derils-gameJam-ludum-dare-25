@@ -25,7 +25,7 @@ public class SpacePressedCammand extends PooledCommand {
 	[Inject]
 	public var banksterProxy:BanksterProxy;
 	
-	public function execute(blank:Object):void {
+	public function execute(keyCode:uint):void {
 		if (guiProxy.bankReady()) {
 			guiProxy.resetBankTimer();
 			

@@ -12,7 +12,7 @@ import org.mvcexpress.mvc.Proxy;
 public class KeyboardProxy extends Proxy {
 	private var stage:Stage;
 	
-	[Provide (name="keyBoardRegistry")]
+	[Provide(name="keyBoardRegistry")]
 	public var keyRegistry:Dictionary = new Dictionary();
 	
 	private var messageKeysRegistry:Dictionary = new Dictionary();
@@ -43,7 +43,7 @@ public class KeyboardProxy extends Proxy {
 		keyRegistry[event.keyCode] = false;
 		//
 		if (messageKeysRegistry[event.keyCode] != null) {
-			sendMessage(messageKeysRegistry[event.keyCode]);
+			sendMessage(messageKeysRegistry[event.keyCode], event.keyCode);
 		}
 	}
 	

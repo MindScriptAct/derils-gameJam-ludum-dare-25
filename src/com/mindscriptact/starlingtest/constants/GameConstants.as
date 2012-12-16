@@ -26,6 +26,8 @@ public class GameConstants {
 	
 	static public const ENEMY_TURN_OCUPY_TIME:int = 2000;
 	
+	static public const ENTER_KEY_DISABLE_TIME:int = 1500;
+	
 
 }
 }

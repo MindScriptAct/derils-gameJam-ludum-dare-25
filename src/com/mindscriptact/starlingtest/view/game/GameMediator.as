@@ -73,13 +73,17 @@ public class GameMediator extends Mediator {
 	
 		//var enemy:EnemySprite = new EnemySprite(0, EnemyTypes.OCCUPYER);
 		//gamePlayerHolder.addChildAt(enemy, 0);
-		
+	
 	}
 	
 	public function handleChangeEnemy(enemySpownVo:EnemySpawnParamsVo):void {
 		for (var i:int = 0; i < enemyImages.length; i++) {
 			if (enemyImages[i].enemyId == enemySpownVo.id) {
 				enemyImages[i].changeType(enemySpownVo.enemyType);
+				if (enemySpownVo.enemyType == EnemyTypes.OCCUPYER) {
+					enemyBarImages[i].visible = false;
+					enemyBarBorderImages[i].visible = false;
+				}
 				break;
 			}
 		}

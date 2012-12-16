@@ -1,5 +1,7 @@
 package com.mindscriptact.starlingtest.view.main.screens {
 import com.bit101.components.PushButton;
+import com.greensock.data.TweenMaxVars;
+import com.greensock.TweenMax;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.gui.GuiProxy;
 import flash.events.Event;
@@ -7,6 +9,7 @@ import flash.events.MouseEvent;
 import flash.text.TextField;
 import flash.text.TextFormat;
 import flash.text.TextFormatAlign;
+import flash.utils.setTimeout;
 import org.mvcexpress.mvc.Mediator;
 
 /**
@@ -25,10 +28,19 @@ public class GameOverScreenMediator extends Mediator {
 		//var startButton:PushButton = new PushButton(view, 100, 100, "BAIL OUT!", handleStartGame);
 		
 		addListener(view.bailOut, MouseEvent.CLICK, handleGomeOver);
+		view.bailOut.visible = false;
 		
 		view.scoredMoney.text = "" + guiProxy.getTotalScore() + " $";
-				
+		
 		(view.scoredMoney as TextField).setTextFormat(new TextFormat('myBoldVerdana', 49, 0xFFFFFF, true, null, null, null, null, TextFormatAlign.LEFT));
+		
+		setTimeout(showBailoutButton, 1000);
+	}
+	
+	private function showBailoutButton():void {
+		view.bailOut.visible = true;
+		view.bailOut.alpha = 0;
+		TweenMax.to(view.bailOut, 1, {alpha: 1});
 	}
 	
 	private function handleGomeOver(event:MouseEvent):void {

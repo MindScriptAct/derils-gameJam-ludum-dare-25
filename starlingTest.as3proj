@@ -4,14 +4,14 @@
   <output>
     <movie outputType="Application" />
     <movie input="" />
-    <movie path="bin\starlingTest.swf" />
+    <movie path="bin\iAmTheBankster.swf" />
     <movie fps="60" />
-    <movie width="1800" />
-    <movie height="800" />
+    <movie width="1280" />
+    <movie height="720" />
     <movie version="11" />
     <movie minorVersion="5" />
     <movie platform="Flash Player" />
-    <movie background="#C0C0C0" />
+    <movie background="#000000" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>

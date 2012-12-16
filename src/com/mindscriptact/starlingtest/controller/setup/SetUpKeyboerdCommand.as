@@ -15,7 +15,11 @@ public class SetUpKeyboerdCommand extends Command {
 	
 	public function execute(blank:Object):void {
 		keyboardProxy.registerMessageSendOnPress(Keyboard.SPACE, Message.SPACE_PRESS);
+		
 		keyboardProxy.registerMessageSendOnPress(Keyboard.ENTER, Message.ENTER_PRESS);
+		keyboardProxy.registerMessageSendOnPress(Keyboard.CONTROL, Message.ENTER_PRESS);
+		keyboardProxy.registerMessageSendOnPress(Keyboard.ALTERNATE, Message.ENTER_PRESS);
+		keyboardProxy.registerMessageSendOnPress(Keyboard.SHIFT, Message.ENTER_PRESS);
 	}
 
 }
