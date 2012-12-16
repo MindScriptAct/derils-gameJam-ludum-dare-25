@@ -44,7 +44,8 @@ public class GuiProxy extends Proxy {
 	}
 	
 	public function resetTotalMoney():void {
-		this.totalCollectedMoney = 0
+		this.totalCollectedMoney = 0;
+		sendMessage(DataMessage.SCORED_MONEY_CHANGED);
 	}
 	
 	public function setBankTotalTime(time:int):void {
@@ -77,6 +78,7 @@ public class GuiProxy extends Proxy {
 		this.currentMoney += money
 		this.totalCollectedMoney += money;
 		sendMessage(DataMessage.MONEY_CHANGED);
+		sendMessage(DataMessage.SCORED_MONEY_CHANGED);
 	}
 	
 	public function getScreenId():String {

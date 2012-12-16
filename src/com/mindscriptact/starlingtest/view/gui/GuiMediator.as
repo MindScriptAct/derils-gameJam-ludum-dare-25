@@ -20,10 +20,15 @@ public class GuiMediator extends Mediator {
 		processMap.provide(view, "gui_view");
 		
 		addHandler(DataMessage.MONEY_CHANGED, handleMoneyChange);
+		addHandler(DataMessage.SCORED_MONEY_CHANGED, handleScoredMoneyChange);
 		addHandler(DataMessage.GUI_STAGE_CHANGED, handleStageChange);
 		
 		addHandler(Message.SHOW_STAGE_DONE, handleShowStageDone);
 		addHandler(Message.HIDE_STAGE_DONE, handleHideStageDone);
+	}
+	
+	private function handleScoredMoneyChange(blank:Object):void {
+		view.shawScoredMoney(guiProxy.getTotalScore());
 	}
 	
 	private function handleHideStageDone(blank:Object):void {
