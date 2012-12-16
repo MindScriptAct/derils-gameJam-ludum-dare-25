@@ -20,7 +20,7 @@ public class GameConstants {
 	static public const ENEMY_MOVE_SPEED_BASE:int = 2;
 	static public const ENEMY_MOVE_SPEED_MODIFIER:int = 3;
 	
-	static public const ENEMY_MENEY:int = 100;
+	static public const ENEMY_MENEY:int = 30;
 
 }
 }

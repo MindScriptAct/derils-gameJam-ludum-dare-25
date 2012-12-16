@@ -11,6 +11,7 @@ public class Message {
 	
 	static public const SPACE_PRESS:String = "spacePress";
 	static public const ADD_COMMONER:String = "addCommoner";
+	static public const CHANGE_ENEMY_TYPE:String = "changeEnemyType";
 
 }
 }

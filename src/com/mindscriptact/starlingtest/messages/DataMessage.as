@@ -7,5 +7,6 @@ package com.mindscriptact.starlingtest.messages {
 public class DataMessage {
 static public const ENEMY_ADDED:String = "enemyAdded";
 static public const MONEY_CHANGED:String = "moneyChanged";
+static public const ENEMY_TYPE_CHANGE:String = "enemyTypeChange";
 }
 }

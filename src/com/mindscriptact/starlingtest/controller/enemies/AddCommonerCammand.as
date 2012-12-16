@@ -1,4 +1,5 @@
 package com.mindscriptact.starlingtest.controller.enemies {
+import com.mindscriptact.starlingtest.constants.EnemyTypes;
 import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.model.enemies.EnemyProxy;
 import flash.geom.Point;
@@ -16,11 +17,12 @@ public class AddCommonerCammand extends PooledCommand {
 	
 	public function execute(count:int):void {
 		
-		var leftSide:Boolean = Math.random() > 0.5;
+		var goRight:Boolean = Math.random() > 0.5;
+		var goDown:Boolean = Math.random() > 0.5;
 		
 		var position:Point = new Point();
 		
-		if (leftSide) {
+		if (goRight) {
 			position.x = -GameConstants.ENEMY_SIZE;
 		} else {
 			position.x = GameConstants.GAME_WIDTH + GameConstants.ENEMY_SIZE;
@@ -33,7 +35,7 @@ public class AddCommonerCammand extends PooledCommand {
 		
 		position.y = Math.floor(Math.random() * (GameConstants.GAME_HEIGHT - GameConstants.ENEMY_SIZE * 2)) + GameConstants.ENEMY_SIZE;
 		
-		enemyProxy.addEnemy(position, leftSide, moveSpeed, totalMoney);
+		enemyProxy.addEnemy(EnemyTypes.COMMONER, position, goRight, goDown, moveSpeed, totalMoney);
 	}
 
 }

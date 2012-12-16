@@ -1,7 +1,7 @@
 package com.mindscriptact.starlingtest.view.game {
 import com.mindscriptact.starlingtest.messages.DataMessage;
+import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import com.mindscriptact.starlingtest.picLib.PicResources;
-import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
 import com.mindscriptact.starlingtest.view.game.elements.BanksterSprite;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import com.mindscriptact.starlingUtils.easySprites.EasyBackgroundSprite;
@@ -54,11 +54,21 @@ public class GameMediator extends Mediator {
 		processMap.provide(bankster, "bankster_component");
 		
 		addHandler(DataMessage.ENEMY_ADDED, handleAddEnemy);
+		addHandler(DataMessage.ENEMY_TYPE_CHANGE, handleChangeEnemy);
 	
 	}
 	
-	private function handleAddEnemy(enemyId:int):void {
-		var enemy:EnemySprite = new EnemySprite(enemyId);
+	public function handleChangeEnemy(enemySpownVo:EnemySpawnParamsVo):void {
+		for (var i:int = 0; i < enemyImages.length; i++) {
+			if (enemyImages[i].enemyId == enemySpownVo.id) {
+				enemyImages[i].changeType(enemySpownVo.enemyType);
+				break;
+			}
+		}
+	}
+	
+	private function handleAddEnemy(enemySpawnVo:EnemySpawnParamsVo):void {
+		var enemy:EnemySprite = new EnemySprite(enemySpawnVo.id, enemySpawnVo.enemyType);
 		gamePlayerHolder.addChildAt(enemy, 0);
 		enemy.x = -200;
 		enemyImages.push(enemy);

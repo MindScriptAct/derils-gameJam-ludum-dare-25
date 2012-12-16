@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.model.enemies {
 import com.mindscriptact.starlingtest.messages.DataMessage;
+import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import flash.geom.Point;
 import org.mvcexpress.mvc.Proxy;
 
@@ -16,12 +17,14 @@ public class EnemyProxy extends Proxy {
 	
 	}
 	
-	public function addEnemy(position:Point, leftSide:Boolean, moveSpeed:Number, totalMoney:int):void {
+	public function addEnemy(enemyType:int, position:Point, goRight:Boolean, goDown:Boolean, moveSpeed:Number, totalMoney:int):void {
 		trace("EnemyProxy.addEnemy");
 		
 		var enemy:EnemyVO = new EnemyVO();
+		enemy.enemyType = enemyType;
 		enemy.position = position;
-		enemy.leftSide = leftSide;
+		enemy.goRight = goRight;
+		enemy.goDown = goDown;
 		enemy.moveSpeed = moveSpeed;
 		
 		enemy.totalMoney = totalMoney;
@@ -29,7 +32,7 @@ public class EnemyProxy extends Proxy {
 		
 		enemies.push(enemy);
 		
-		sendMessage(DataMessage.ENEMY_ADDED, enemy.id);
+		sendMessage(DataMessage.ENEMY_ADDED, new EnemySpawnParamsVo(enemy.id, enemyType));
 	}
 	
 	override protected function onRegister():void {
@@ -40,26 +43,29 @@ public class EnemyProxy extends Proxy {
 	
 	}
 	
-	public function removeMoneyInRangeOfPoint(position:Point, rangePowered:int, ammount:int):int {
-		var totalMoneyRemoved:int = 0;
+	public function getEnemiesInRange(position:Point, rangePowered:int):Vector.<EnemyVO> {
+		var enemiesInRange:Vector.<EnemyVO> = new Vector.<EnemyVO>();
 		for (var i:int = 0; i < enemies.length; i++) {
 			var enemyVo:EnemyVO = enemies[i]
 			var dx:Number = position.x - enemyVo.position.x;
 			var dy:Number = position.y - enemyVo.position.y;
 			var distPow:int = dx * dx + dy * dy;
 			if (distPow < rangePowered) {
-				if (enemyVo.curentMoney > 0) {
-					if (enemyVo.curentMoney > ammount) {
-						totalMoneyRemoved += ammount;
-						enemyVo.curentMoney -= ammount;
-					} else {
-						totalMoneyRemoved += enemyVo.curentMoney;
-						enemyVo.curentMoney = 0;
-					}
-				}
+				enemiesInRange.push(enemyVo);
 			}
 		}
-		return totalMoneyRemoved;
+		return enemiesInRange;
+	}
+	
+	public function changeEnemyType(id:int, newEnemyType:int, goDown:Boolean):void {
+		for (var i:int = 0; i < enemies.length; i++) {
+			if (enemies[i].id == id) {
+				enemies[i].enemyType = newEnemyType;
+				enemies[i].goDown = goDown;
+				sendMessage(DataMessage.ENEMY_TYPE_CHANGE, new EnemySpawnParamsVo(id, newEnemyType));
+				break;
+			}
+		}
 	}
 }
 }

@@ -7,12 +7,17 @@ import flash.geom.Point;
  */
 public class EnemyVO {
 	
+	
+	
 	static private var enemyCount:int = 0;
 	
 	public var id:int = enemyCount++;
 	
+	public var enemyType:int;
+	
 	public var position:Point
-	public var leftSide:Boolean;
+	public var goRight:Boolean;
+	public var goDown:Boolean;
 	public var moveSpeed:Number;
 	
 	private var _totalMoney:int;
