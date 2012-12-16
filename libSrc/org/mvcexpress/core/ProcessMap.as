@@ -68,6 +68,7 @@ public class ProcessMap implements IProcessMap {
 			Process.canConstruct = true;
 		}
 		var process:Process = new processClass();
+		process.setModuleName(moduleName);
 		CONFIG::debug {
 			Process.canConstruct = false;
 		}
@@ -104,6 +105,7 @@ public class ProcessMap implements IProcessMap {
 			Process.canConstruct = true;
 		}
 		var process:Process = new processClass();
+		process.setModuleName(moduleName);
 		CONFIG::debug {
 			Process.canConstruct = false;
 		}

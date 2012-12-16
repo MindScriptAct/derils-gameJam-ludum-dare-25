@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.engine {
 import com.mindscriptact.starlingtest.engine.tasks.CalculateBankTimerTask;
+import com.mindscriptact.starlingtest.engine.tasks.ColideWithEnemies;
 import com.mindscriptact.starlingtest.engine.tasks.HeadTask;
 import com.mindscriptact.starlingtest.engine.tasks.MoveBanksterTask;
 import com.mindscriptact.starlingtest.engine.tasks.MoveEnemiesTask;
@@ -15,6 +16,7 @@ import org.mvcexpress.live.Task;
  */
 public class GameProcess extends Process {
 	
+	
 	override public function onRegister():void {
 		
 		var headTask:Task = this.mapTask(HeadTask);
@@ -27,6 +29,8 @@ public class GameProcess extends Process {
 		
 		
 		var movecViewElements:Task = this.mapTask(MoveViewElementTask);
+		
+		var colideWithEnemies:Task = this.mapTask(ColideWithEnemies);
 		
 		var renderGuiTask:Task = this.mapTask(RenderGuiTask);
 		
@@ -42,10 +46,17 @@ public class GameProcess extends Process {
 		
 		this.addTask(movecViewElements);
 		
+		this.addTask(colideWithEnemies);
+		
 		this.addTask(renderGuiTask);
 		
 		
 		addHandler(Message.START_GAME, handleStartGame);
+		addHandler(Message.GAME_OVER, handleGameOver);
+	}
+	
+	private function handleGameOver(blank:Object):void {
+		this.stopProcess();
 	}
 	
 	private function handleStartGame(level:int):void {

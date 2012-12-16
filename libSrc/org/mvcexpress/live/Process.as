@@ -10,6 +10,9 @@ import org.mvcexpress.core.namespace.mvcExpressLive;
 import org.mvcexpress.core.namespace.pureLegsCore;
 import org.mvcexpress.core.ProcessMap;
 import org.mvcexpress.core.taskTest.TastTestVO;
+import org.mvcexpress.core.traceObjects.MvcTraceActions;
+import org.mvcexpress.core.traceObjects.TraceProcess_sendMessage;
+import org.mvcexpress.MvcExpress;
 import org.mvcexpress.utils.checkClassSuperclass;
 
 /**
@@ -17,6 +20,8 @@ import org.mvcexpress.utils.checkClassSuperclass;
  * @author Raimundas Banevicius (http://www.mindscriptact.com/)
  */
 public class Process {
+	
+	private var moduleName:String
 	
 	static public const FRAME_PROCESS:int = 0;
 	
@@ -45,6 +50,9 @@ public class Process {
 	private var tail:Task;
 	
 	private var _isRunning:Boolean = false;
+	
+	private var postMessageTypes:Vector.<String> = new Vector.<String>();
+	private var postMessageParams:Vector.<Object> = new Vector.<Object>();
 	
 	// Allows Process to be constructed. (removed from release build to save some performance.)
 	/** @private */
@@ -124,10 +132,19 @@ public class Process {
 		
 		var task:Task = new taskClass();
 		processMap.initTask(task, taskClass);
-		
+		task.process = this;
 		taskRegistry[taskId] = task;
 		
 		return task;
+	}
+	
+	mvcExpressLive function setModuleName(moduleName:String):void {
+		this.moduleName = moduleName;
+	}
+	
+	mvcExpressLive function stackPostMessage(type:String, params:Object):void {
+		postMessageTypes.push(type);
+		postMessageParams.push(params);
 	}
 	
 	mvcExpressLive function remove():void {
@@ -144,6 +161,9 @@ public class Process {
 		// null internals
 		head = null;
 		processMap = null;
+		
+		postMessageTypes = null;
+		postMessageParams = null;
 	}
 	
 	public function get isRunning():Boolean {
@@ -207,6 +227,7 @@ public class Process {
 	mvcExpressLive function runProcess(event:Event = null):void {
 		//trace("Process.runProcess > event : " + event);
 		use namespace mvcExpressLive;
+		use namespace pureLegsCore;
 		CONFIG::debug {
 			var testRuns:Vector.<TastTestVO> = new Vector.<TastTestVO>();
 		}
@@ -238,6 +259,25 @@ public class Process {
 			} else {
 				break;
 			}
+		}
+		// send post messages
+		while (postMessageTypes.length) {
+			var type:String = postMessageTypes.shift() as String;
+			var params:Object = postMessageParams.shift();
+			// log the action
+			CONFIG::debug {
+				use namespace pureLegsCore;
+				
+				var moduleName:String = messenger.moduleName;
+				MvcExpress.debug(new TraceProcess_sendMessage(MvcTraceActions.PROCESS_POST_SENDMESSAGE, moduleName, this, type, params));
+			}
+			messenger.send(type, params);
+			// clean up logging the action
+			CONFIG::debug {
+				use namespace pureLegsCore;
+				MvcExpress.debug(new TraceProcess_sendMessage(MvcTraceActions.PROCESS_POST_SENDMESSAGE_CLEAN, moduleName, this, type, params));
+			}
+			
 		}
 		// run needed tests.
 		CONFIG::debug {
