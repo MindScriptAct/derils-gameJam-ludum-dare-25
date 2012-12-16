@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.model.keyboard {
 import flash.display.Stage;
+import flash.events.FocusEvent;
 import flash.events.KeyboardEvent;
 import flash.utils.Dictionary;
 import org.mvcexpress.mvc.Proxy;
@@ -18,6 +19,14 @@ public class KeyboardProxy extends Proxy {
 	
 	public function KeyboardProxy(stage:Stage) {
 		this.stage = stage;
+		
+		this.stage.focus = this.stage;
+		
+		this.stage.addEventListener(FocusEvent.FOCUS_OUT, handleFocusChange);
+	}
+	
+	private function handleFocusChange(event:FocusEvent):void {
+		this.stage.focus = this.stage;
 	}
 	
 	override protected function onRegister():void {
