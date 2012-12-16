@@ -32,11 +32,11 @@ public class AddCommonerCammand extends PooledCommand {
 			var moveSpeed:Number = GameConstants.ENEMY_MOVE_SPEED_BASE;
 			moveSpeed += Math.random() * GameConstants.ENEMY_MOVE_SPEED_MODIFIER;
 			
-			var totalMoney:int = GameConstants.ENEMY_MENEY;
 			
 			position.y = Math.floor(Math.random() * (GameConstants.GAME_HEIGHT - GameConstants.ENEMY_SIZE * 2)) + GameConstants.ENEMY_SIZE;
 			
-			enemyProxy.addEnemy(EnemyTypes.COMMONER, position, goRight, goDown, moveSpeed, totalMoney);
+			var cotalCoins:int = GameConstants.ENEMY_COINS;
+			enemyProxy.addEnemy(EnemyTypes.COMMONER, position, goRight, goDown, moveSpeed, cotalCoins);
 		}
 	}
 

@@ -3,6 +3,7 @@ import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
 import com.mindscriptact.starlingtest.view.game.elements.BankActionReadyImage;
 import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
+import com.mindscriptact.starlingtest.view.game.elements.CoinSprite;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import flash.geom.Point;
 import org.mvcexpress.live.Task;
@@ -30,10 +31,7 @@ public class MoveViewElementTask extends Task {
 	public var enemyImages:Vector.<EnemySprite>
 	
 	[Inject(name="enemie_bar_components")]
-	public var enemyBarImages:Vector.<Image>;
-	
-	[Inject(name="enemie_bar_image_components")]
-	public var enemyBarBorderImages:Vector.<Image>;
+	public var enemyCoinImages:Vector.<CoinSprite>;
 	
 	override public function run():void {
 		// put bankster to correct positio
@@ -47,13 +45,13 @@ public class MoveViewElementTask extends Task {
 			enemyImages[i].x = enemies[i].position.x;
 			enemyImages[i].y = enemies[i].position.y;
 			
-			enemyBarImages[i].x = enemies[i].position.x - 25;
-			enemyBarImages[i].y = enemies[i].position.y - GameConstants.ENEMY_SIZE + 10;
+			enemyCoinImages[i].x = enemies[i].position.x - 3;
+			enemyCoinImages[i].y = enemies[i].position.y - GameConstants.ENEMY_SIZE + 10;
 			
-			enemyBarImages[i].scaleX = enemies[i].moneyPerc;
-			
-			enemyBarBorderImages[i].x = enemies[i].position.x - 25;
-			enemyBarBorderImages[i].y = enemies[i].position.y - GameConstants.ENEMY_SIZE + 10;
+			//enemyBarImages[i].scaleX = enemies[i].moneyPerc;
+			//
+			//enemyBarBorderImages[i].x = enemies[i].position.x - 25;
+			//enemyBarBorderImages[i].y = enemies[i].position.y - GameConstants.ENEMY_SIZE + 10;
 			
 		}
 	}

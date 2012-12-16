@@ -12,5 +12,6 @@ static public const GUI_SCREEN_CHANGED:String = "guiScreenChanged";
 static public const REMOVE_ALL_ENEMIES:String = "removeAllEnemies";
 static public const GUI_STAGE_CHANGED:String = "guiStageChanged";
 static public const SCORED_MONEY_CHANGED:String = "scoredMoneyChanged";
+static public const ENEMY_COIN_CHANGE:String = "enemyCoinChange";
 }
 }

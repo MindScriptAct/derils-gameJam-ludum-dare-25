@@ -20,29 +20,12 @@ public class EnemyVO {
 	public var goDown:Boolean;
 	public var moveSpeed:Number;
 	
-	private var _totalMoney:int;
-	private var _curentMoney:int;
+	public var curentCoins:int;
+	
 	public var moneyPerc:Number;
 	public var timeRemaining:int;
 	public var lastTimer:uint;
-	
-	public function get totalMoney():int {
-		return _totalMoney;
-	}
-	
-	public function set totalMoney(value:int):void {
-		_totalMoney = value;
-		moneyPerc = _curentMoney / _totalMoney;
-	}
-	
-	public function get curentMoney():int {
-		return _curentMoney;
-	}
-	
-	public function set curentMoney(value:int):void {
-		_curentMoney = value;
-		moneyPerc = _curentMoney / _totalMoney;
-	}
+
 
 }
 }

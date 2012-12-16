@@ -36,13 +36,13 @@ public class SpacePressedCammand extends PooledCommand {
 			
 			for (var i:int = 0; i < enemiesInRange.length; i++) {
 				var enemyVo:EnemyVO = enemiesInRange[i];
-				if (enemyVo.curentMoney > 0) {
-					if (enemyVo.curentMoney > GameConstants.BANK_AMMOUNT) {
-						collectedMoney += GameConstants.BANK_AMMOUNT;
-						enemyVo.curentMoney -= GameConstants.BANK_AMMOUNT;
-					} else {
-						collectedMoney += enemyVo.curentMoney;
-						enemyVo.curentMoney = 0;
+				if (enemyVo.curentCoins > 0) {
+					
+					collectedMoney += GameConstants.COIN_VALUE;
+					
+					enemyProxy.removeCoin(enemyVo.id);
+					
+					if (enemyVo.curentCoins == 0) {
 						if (enemyVo.enemyType == EnemyTypes.COMMONER) {
 							var goDownInt:int = 0;
 							if (banksterPosition.y < enemyVo.position.y) {

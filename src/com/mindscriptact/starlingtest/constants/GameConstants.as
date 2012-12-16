@@ -22,7 +22,8 @@ public class GameConstants {
 	static public const ENEMY_MOVE_SPEED_ACELERATE:Number = 0.5;
 	static public const ENEMY_MOVE_SPEED_CAP:Number = 20;
 	
-	static public const ENEMY_MENEY:int = 30;
+	static public const ENEMY_COINS:int = 3;
+	static public const COIN_VALUE:int = 10;
 	
 	static public const ENEMY_TURN_OCUPY_TIME:int = 2000;
 	

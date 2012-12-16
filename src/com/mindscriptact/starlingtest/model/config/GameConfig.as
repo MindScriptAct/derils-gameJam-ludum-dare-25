@@ -27,7 +27,7 @@ public class GameConfig extends Proxy {
 	}
 	
 	private function generateStageConfig(stageId:int):void {
-		stageConfigRegistry[stageId] = new StageConfigVO(GameConstants.ENEMY_MENEY * (((stageId - 1) * 10) - 5), (stageId - 1) * 10);
+		stageConfigRegistry[stageId] = new StageConfigVO(GameConstants.ENEMY_COINS * GameConstants.COIN_VALUE * (((stageId - 1) * 10) - 5), (stageId - 1) * 10);
 	}
 	
 	override protected function onRegister():void {

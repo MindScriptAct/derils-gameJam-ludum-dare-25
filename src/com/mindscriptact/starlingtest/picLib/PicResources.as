@@ -1,6 +1,9 @@
 package com.mindscriptact.starlingtest.picLib {
+import com.bit101.components.Calendar;
 import com.mindscriptact.starlingUtils.easyTextures.EasyTextureGenerator;
 import flash.display.Bitmap;
+import flash.display.BitmapData;
+import flash.geom.Matrix;
 import flash.utils.Dictionary;
 import starling.textures.Texture;
 
@@ -28,6 +31,8 @@ public class PicResources {
 	static public const COIN_1_ID:int = elementCount++;
 	static public const COIN_2_ID:int = elementCount++;
 	static public const COIN_3_ID:int = elementCount++;
+	static public const COIN_4_ID:int = elementCount++;
+	static public const COIN_5_ID:int = elementCount++;
 	
 	static private var instance:PicResources;
 	static private var textureCash:Dictionary = new Dictionary();
@@ -55,9 +60,12 @@ public class PicResources {
 	static private var RivalBankerClass:Class;
 	
 	[Embed(source="/pics/coin.png",mimeType="image/png")]
-	static private var CoinClass:Class;	
+	static private var CoinClass:Class;
 	
 	static public function getTexture(id:int):Texture {
+		var transformMatrix:Matrix;
+		var tempBitmapData:BitmapData;
+		var tempBitmap:Bitmap;
 		if (!instance) {
 			instance = new PicResources();
 		}
@@ -79,6 +87,54 @@ public class PicResources {
 					break;
 				case ENEMY_MONEY_BORDER_ID: 
 					textureCash[id] = EasyTextureGenerator.rectangle(50, 10, -1, 0xFFFFFF, 2);
+					break;
+				case COIN_2_ID: 
+					tempBitmap = new CoinClass();
+					tempBitmapData = new BitmapData(tempBitmap.width * 2, tempBitmap.height, true, 0x0);
+					tempBitmapData.draw(tempBitmap);
+					transformMatrix = new Matrix();
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					textureCash[id] = Texture.fromBitmapData(tempBitmapData);
+					break;
+				case COIN_3_ID: 
+					tempBitmap = new CoinClass();
+					tempBitmapData = new BitmapData(tempBitmap.width * 3, tempBitmap.height, true, 0x0);
+					tempBitmapData.draw(tempBitmap);
+					transformMatrix = new Matrix();
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					textureCash[id] = Texture.fromBitmapData(tempBitmapData);
+					break;
+				case COIN_4_ID: 
+					tempBitmap = new CoinClass();
+					tempBitmapData = new BitmapData(tempBitmap.width * 3, tempBitmap.height, true, 0x0);
+					tempBitmapData.draw(tempBitmap);
+					transformMatrix = new Matrix();
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					textureCash[id] = Texture.fromBitmapData(tempBitmapData);
+					break;
+				case COIN_5_ID: 
+					tempBitmap = new CoinClass();
+					tempBitmapData = new BitmapData(tempBitmap.width * 3, tempBitmap.height, true, 0x0);
+					tempBitmapData.draw(tempBitmap);
+					transformMatrix = new Matrix();
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					transformMatrix.translate(tempBitmap.width, 0);
+					tempBitmapData.draw(tempBitmap, transformMatrix);
+					textureCash[id] = Texture.fromBitmapData(tempBitmapData);
 					break;
 				default: 
 			}
@@ -119,9 +175,7 @@ public class PicResources {
 				pic = new RivalBankerClass();
 				break;
 			case COIN_1_ID: 
-			case COIN_2_ID: 
-			case COIN_3_ID: 
-				pic = new CoinClass();				
+				pic = new CoinClass();
 				break;
 			default: 
 		}

@@ -18,7 +18,7 @@ public class EnemyProxy extends Proxy {
 	
 	}
 	
-	public function addEnemy(enemyType:int, position:Point, goRight:Boolean, goDown:Boolean, moveSpeed:Number, totalMoney:int):void {
+	public function addEnemy(enemyType:int, position:Point, goRight:Boolean, goDown:Boolean, moveSpeed:Number, totalCoins:int):void {
 		trace("EnemyProxy.addEnemy");
 		
 		var enemy:EnemyVO = new EnemyVO();
@@ -28,12 +28,11 @@ public class EnemyProxy extends Proxy {
 		enemy.goDown = goDown;
 		enemy.moveSpeed = moveSpeed;
 		
-		enemy.totalMoney = totalMoney;
-		enemy.curentMoney = totalMoney;
+		enemy.curentCoins = totalCoins;
 		
 		enemies.push(enemy);
 		
-		sendMessage(DataMessage.ENEMY_ADDED, new EnemySpawnParamsVo(enemy.id, enemyType));
+		sendMessage(DataMessage.ENEMY_ADDED, new EnemySpawnParamsVo(enemy.id, enemyType, totalCoins));
 	}
 	
 	override protected function onRegister():void {
@@ -67,7 +66,7 @@ public class EnemyProxy extends Proxy {
 				} else if (goDownInt == 1) {
 					enemies[i].goDown = true;
 				}
-				sendMessage(DataMessage.ENEMY_TYPE_CHANGE, new EnemySpawnParamsVo(id, newEnemyType));
+				sendMessage(DataMessage.ENEMY_TYPE_CHANGE, new EnemySpawnParamsVo(id, newEnemyType, -1));
 				break;
 			}
 		}
@@ -88,6 +87,16 @@ public class EnemyProxy extends Proxy {
 			enemyVo.position = null;
 		}
 		sendMessage(DataMessage.REMOVE_ALL_ENEMIES);
+	}
+	
+	public function removeCoin(id:int):void {
+		for (var i:int = 0; i < enemies.length; i++) {
+			if (enemies[i].id == id) {
+				enemies[i].curentCoins--;
+				sendMessage(DataMessage.ENEMY_COIN_CHANGE, new EnemySpawnParamsVo(id, -1, enemies[i].curentCoins));
+				break;
+			}
+		}
 	}
 }
 }

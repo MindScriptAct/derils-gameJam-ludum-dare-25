@@ -11,25 +11,28 @@ import starling.display.Sprite;
 public class CoinSprite extends Sprite {
 	private var coinImage:Image;
 	
-	public var ammount:int;
+	public var enemyId:int;
 	
 	public function CoinSprite(enemyId:int, ammount:int) {
-		this.ammount = enemyId;
+		this.enemyId = enemyId;
 		createCoinPic(ammount);
-	
 	}
 	
-	public function changeType(enemyType:int):void {
+	public function changeAmmount(ammount:int):void {
 		if (coinImage) {
 			coinImage.dispose();
 			this.removeChild(coinImage);
 			coinImage = null;
 		}
-		createCoinPic(enemyType);
+		createCoinPic(ammount);
 	}
 	
 	private function createCoinPic(ammount:int):void {
 		switch (ammount) {
+			case 0: 
+				coinImage = null;
+				// show nothing
+				break;
 			case 1: 
 				coinImage = new Image(PicResources.getTexture(PicResources.COIN_1_ID));
 				break;
@@ -42,17 +45,20 @@ public class CoinSprite extends Sprite {
 			default: 
 				throw Error("not suported enemy type:" + ammount);
 		}
-		
-		this.addChild(coinImage);
-		coinImage.pivotX = coinImage.width >> 1;
-		coinImage.pivotY = coinImage.height >> 1;
+		if (coinImage) {
+			this.addChild(coinImage);
+			coinImage.pivotX = coinImage.width >> 1;
+			coinImage.pivotY = coinImage.height >> 1;
+		}
 	
 	}
 	
 	override public function dispose():void {
-		this.removeChild(coinImage);
-		coinImage.dispose();
-		coinImage = null;
+		if (coinImage) {
+			this.removeChild(coinImage);
+			coinImage.dispose();
+			coinImage = null;
+		}
 		super.dispose();
 	}
 
