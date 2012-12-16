@@ -21,7 +21,8 @@ public class ColideWithEnemies extends Task {
 	
 	override public function run():void {
 		
-		var rangePowered:int = (GameConstants.BANKSTA_SIZE / 2 + GameConstants.ENEMY_SIZE / 2) * (GameConstants.BANKSTA_SIZE / 2 + GameConstants.ENEMY_SIZE / 2);
+		var range:int = (GameConstants.BANKSTA_SIZE / 3 + GameConstants.ENEMY_SIZE / 3)
+		var rangePowered:int = range * range;
 		
 		for (var i:int = 0; i < enemies.length; i++) {
 			var enemyVo:EnemyVO = enemies[i];

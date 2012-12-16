@@ -18,7 +18,7 @@ public class MoveViewElementTask extends Task {
 	public var curentPosition:Point;
 	
 	[Inject(name="bankster_component")]
-	public var bankster:BanksterImage;
+	public var bankster:Image;
 	
 	[Inject(name="bankster_ready_component")]
 	public var banksterReady:BankActionReadyImage;

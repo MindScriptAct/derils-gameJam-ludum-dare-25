@@ -58,11 +58,15 @@ public class EnemyProxy extends Proxy {
 		return enemiesInRange;
 	}
 	
-	public function changeEnemyType(id:int, newEnemyType:int, goDown:Boolean):void {
+	public function changeEnemyType(id:int, newEnemyType:int, goDownInt:int):void {
 		for (var i:int = 0; i < enemies.length; i++) {
 			if (enemies[i].id == id) {
 				enemies[i].enemyType = newEnemyType;
-				enemies[i].goDown = goDown;
+				if (goDownInt == -1) {
+					enemies[i].goDown = false;
+				} else if (goDownInt == 1) {
+					enemies[i].goDown = true;
+				}
 				sendMessage(DataMessage.ENEMY_TYPE_CHANGE, new EnemySpawnParamsVo(id, newEnemyType));
 				break;
 			}

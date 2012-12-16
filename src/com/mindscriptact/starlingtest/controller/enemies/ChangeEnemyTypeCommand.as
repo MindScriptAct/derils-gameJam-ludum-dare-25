@@ -13,7 +13,7 @@ public class ChangeEnemyTypeCommand extends Command {
 	public var enemyProxy:EnemyProxy;;
 	
 	public function execute(enemyChangeParams:EnemyTypeChangeParamsVo):void {
-		enemyProxy.changeEnemyType(enemyChangeParams.id, enemyChangeParams.enemyType, false);
+		enemyProxy.changeEnemyType(enemyChangeParams.id, enemyChangeParams.enemyType, 0);
 	}
 	
 }

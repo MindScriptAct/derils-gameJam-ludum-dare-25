@@ -17,8 +17,8 @@ public class GameConstants {
 	static public const BANK_RANGE_POWERED:int = BANK_RANGE * BANK_RANGE;
 	static public const BANK_AMMOUNT:int = 10;
 	
-	static public const ENEMY_MOVE_SPEED_BASE:int = 2;
-	static public const ENEMY_MOVE_SPEED_MODIFIER:int = 3;
+	static public const ENEMY_MOVE_SPEED_BASE:Number = 2;
+	static public const ENEMY_MOVE_SPEED_MODIFIER:Number = 3;
 	static public const ENEMY_MOVE_SPEED_ACELERATE:Number = 0.5;
 	static public const ENEMY_MOVE_SPEED_CAP:Number = 50;
 	

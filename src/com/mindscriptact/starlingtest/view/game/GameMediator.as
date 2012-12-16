@@ -1,11 +1,11 @@
 package com.mindscriptact.starlingtest.view.game {
+import com.mindscriptact.starlingtest.constants.EnemyTypes;
 import com.mindscriptact.starlingtest.messages.DataMessage;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.messages.ViewMessage;
 import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import com.mindscriptact.starlingtest.picLib.PicResources;
 import com.mindscriptact.starlingtest.view.game.elements.BankActionReadyImage;
-import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import com.mindscriptact.starlingUtils.easySprites.EasyBackgroundSprite;
 import org.mvcexpress.mvc.Mediator;
@@ -37,7 +37,7 @@ public class GameMediator extends Mediator {
 	[Provide(name="enemie_bar_image_components")]
 	public var enemyBarBorderImages:Vector.<Image> = new Vector.<Image>();
 	
-	public var bankster:BanksterImage;
+	public var bankster:Image;
 	
 	private var banksterReady:BankActionReadyImage;
 	
@@ -53,8 +53,10 @@ public class GameMediator extends Mediator {
 		gamePlayerHolder = new Sprite();
 		view.addChild(gamePlayerHolder);
 		
-		bankster = new BanksterImage();
+		bankster = new Image(PicResources.getTexture(PicResources.BANKSTER_ID));
 		gamePlayerHolder.addChild(bankster);
+		bankster.pivotX = bankster.width >> 1;
+		bankster.pivotY = bankster.height >> 1;
 		processMap.provide(bankster, "bankster_component");
 		
 		banksterReady = new BankActionReadyImage();
@@ -69,6 +71,9 @@ public class GameMediator extends Mediator {
 		addHandler(Message.SHOW_BANKSTER_READY_RANGE, handleShowBanksterReady);
 		addHandler(Message.HIDE_BANKSTER_READY_RANGE, handleHideBanksterReady);
 	
+		//var enemy:EnemySprite = new EnemySprite(0, EnemyTypes.OCCUPYER);
+		//gamePlayerHolder.addChildAt(enemy, 0);
+		
 	}
 	
 	public function handleChangeEnemy(enemySpownVo:EnemySpawnParamsVo):void {

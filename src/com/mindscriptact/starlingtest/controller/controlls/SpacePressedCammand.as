@@ -44,7 +44,13 @@ public class SpacePressedCammand extends PooledCommand {
 						collectedMoney += enemyVo.curentMoney;
 						enemyVo.curentMoney = 0;
 						if (enemyVo.enemyType == EnemyTypes.COMMONER) {
-							enemyProxy.changeEnemyType(enemyVo.id, EnemyTypes.ANGRY_COMMONER, banksterPosition.y < enemyVo.position.y);
+							var goDownInt:int = 0;
+							if (banksterPosition.y < enemyVo.position.y) {
+								goDownInt = 1;
+							} else {
+								goDownInt = -1
+							}
+							enemyProxy.changeEnemyType(enemyVo.id, EnemyTypes.ANGRY_COMMONER, goDownInt);
 							enemyProxy.setTypeChangeTimer(enemyVo.id, GameConstants.ENEMY_TURN_OCUPY_TIME);
 						}
 					}
