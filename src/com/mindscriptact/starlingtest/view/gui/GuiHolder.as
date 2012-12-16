@@ -169,7 +169,7 @@ public class GuiHolder extends Sprite {
 	
 	public function showStage(stageId:int):void {
 		stageText.text = "" + (stageId + 1);
-		cashText.setTextFormat(capitalistFarmat24_left);
+		stageText.setTextFormat(capitalistFarmat24_left);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.mindscriptact.starlingtest.model.gui {
 import com.mindscriptact.starlingtest.constants.GameScreens;
 import com.mindscriptact.starlingtest.messages.DataMessage;
+import com.mindscriptact.starlingtest.messages.Message;
 import flash.utils.getTimer;
 import org.mvcexpress.mvc.Proxy;
 
@@ -19,6 +20,7 @@ public class GuiProxy extends Proxy {
 	private var currentMoney:int = 0;
 	
 	private var neededMoney:int;
+	private var totalCollectedMoney:int;
 	
 	public function GuiProxy() {
 	
@@ -35,6 +37,11 @@ public class GuiProxy extends Proxy {
 	public function resetBankTimer():void {
 		bankTime.timePassed = 0;
 		bankTime.lastTimer = getTimer();
+		sendMessage(Message.HIDE_BANKSTER_READY_RANGE);
+	}
+	
+	public function resetTotalMoney():void {
+		this.totalCollectedMoney = 0
 	}
 	
 	public function setBankTotalTime(time:int):void {
@@ -65,6 +72,7 @@ public class GuiProxy extends Proxy {
 	
 	public function addMoney(money:int):void {
 		this.currentMoney += money
+		this.totalCollectedMoney += money;
 		sendMessage(DataMessage.MONEY_CHANGED);
 	}
 	

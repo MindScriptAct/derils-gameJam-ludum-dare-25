@@ -1,6 +1,7 @@
 package com.mindscriptact.starlingtest.view.main {
 import com.bit101.components.HUISlider;
 import com.bit101.components.PushButton;
+import com.greensock.TweenMax;
 import com.mindscriptact.starlingtest.constants.GameScreens;
 import com.mindscriptact.starlingtest.Main;
 import com.mindscriptact.starlingtest.messages.DataMessage;
@@ -70,6 +71,8 @@ public class MainMediator extends Mediator {
 		gameOverScreen = new GameOverScreen();
 		view.addChild(gameOverScreen);
 		mediatorMap.mediate(gameOverScreen);
+		gameOverScreen.alpha = 0;
+		TweenMax.to(gameOverScreen, 3, { alpha: 1 } );
 	}
 	
 	private function removeStartScreen():void {

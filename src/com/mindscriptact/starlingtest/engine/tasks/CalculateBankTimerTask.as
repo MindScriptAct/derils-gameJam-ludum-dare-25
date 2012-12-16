@@ -1,4 +1,5 @@
 package com.mindscriptact.starlingtest.engine.tasks {
+import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.gui.BankTimeVO;
 import flash.utils.getTimer;
 import org.mvcexpress.live.Task;
@@ -18,6 +19,9 @@ public class CalculateBankTimerTask extends Task {
 			var timer:uint = getTimer();
 			bankTime.timePassed += timer - bankTime.lastTimer;
 			bankTime.lastTimer = timer;
+			if (bankTime.timePassed >= bankTime.totalTime) {
+				sendPostMessage(Message.SHOW_BANKSTER_READY_RANGE);
+			}
 		}
 	}
 

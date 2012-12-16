@@ -18,6 +18,9 @@ public class Message {
 	static public const RESET_GAME:String = "resetGame";
 
 	static public const START_STAGE:String = "startStage";
+	
+	static public const SHOW_BANKSTER_READY_RANGE:String = "showBanksterReadyRange";
+	static public const HIDE_BANKSTER_READY_RANGE:String = "hideBanksterReadyRange";
 
 }
 }

@@ -1,8 +1,11 @@
 package com.mindscriptact.starlingtest.view.game {
 import com.mindscriptact.starlingtest.messages.DataMessage;
+import com.mindscriptact.starlingtest.messages.Message;
+import com.mindscriptact.starlingtest.messages.ViewMessage;
 import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import com.mindscriptact.starlingtest.picLib.PicResources;
-import com.mindscriptact.starlingtest.view.game.elements.BanksterSprite;
+import com.mindscriptact.starlingtest.view.game.elements.BankActionReadyImage;
+import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import com.mindscriptact.starlingUtils.easySprites.EasyBackgroundSprite;
 import org.mvcexpress.mvc.Mediator;
@@ -34,7 +37,9 @@ public class GameMediator extends Mediator {
 	[Provide(name="enemie_bar_image_components")]
 	public var enemyBarBorderImages:Vector.<Image> = new Vector.<Image>();
 	
-	public var bankster:BanksterSprite;
+	public var bankster:BanksterImage;
+	
+	private var banksterReady:BankActionReadyImage;
 	
 	[Embed(source="/pics/santa.xml",mimeType="application/octet-stream")]
 	public const santaAtlasDefinitions:Class;
@@ -48,18 +53,23 @@ public class GameMediator extends Mediator {
 		gamePlayerHolder = new Sprite();
 		view.addChild(gamePlayerHolder);
 		
-		bankster = new BanksterSprite();
+		bankster = new BanksterImage();
 		gamePlayerHolder.addChild(bankster);
-		
 		processMap.provide(bankster, "bankster_component");
+		
+		banksterReady = new BankActionReadyImage();
+		gamePlayerHolder.addChild(banksterReady);
+		processMap.provide(banksterReady, "bankster_ready_component");
+		banksterReady.visible = false;
 		
 		addHandler(DataMessage.ENEMY_ADDED, handleAddEnemy);
 		addHandler(DataMessage.ENEMY_TYPE_CHANGE, handleChangeEnemy);
 		addHandler(DataMessage.REMOVE_ALL_ENEMIES, handleRemoveAllEnemies);
+		
+		addHandler(Message.SHOW_BANKSTER_READY_RANGE, handleShowBanksterReady);
+		addHandler(Message.HIDE_BANKSTER_READY_RANGE, handleHideBanksterReady);
 	
 	}
-	
-
 	
 	public function handleChangeEnemy(enemySpownVo:EnemySpawnParamsVo):void {
 		for (var i:int = 0; i < enemyImages.length; i++) {
@@ -106,6 +116,14 @@ public class GameMediator extends Mediator {
 			gamePlayerHolder.removeChild(tempImage);
 			tempImage.dispose();
 		}
+	}
+	
+	private function handleShowBanksterReady(blank:Object):void {
+		banksterReady.visible = true;
+	}
+	
+	private function handleHideBanksterReady(blank:Object):void {
+		banksterReady.visible = false;
 	}
 	
 	override public function onRemove():void {

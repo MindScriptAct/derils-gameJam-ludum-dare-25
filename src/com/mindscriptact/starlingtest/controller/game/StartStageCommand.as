@@ -43,6 +43,8 @@ public class StartStageCommand extends Command {
 		guiProxy.setNeededMoney(stageConfigVo.neededMoney);
 		
 		sendMessage(Message.ADD_COMMONER, stageConfigVo.commonEnemyCount);
+		
+		sendMessage(Message.HIDE_BANKSTER_READY_RANGE);
 	}
 
 }

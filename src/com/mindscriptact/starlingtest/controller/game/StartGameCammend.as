@@ -10,8 +10,6 @@ import org.mvcexpress.mvc.Command;
  */
 public class StartGameCammend extends Command {
 	
-	;
-	
 	[Inject]
 	public var guiProxy:GuiProxy;
 	
@@ -20,7 +18,7 @@ public class StartGameCammend extends Command {
 		var screenId:String = guiProxy.getScreenId();
 		if (screenId == GameScreens.START_SCREEN) {
 			guiProxy.setScreenId(GameScreens.GAME_SCREEN);
-			
+			guiProxy.resetTotalMoney();
 			sendMessage(Message.START_STAGE, 0);
 		}
 	}
