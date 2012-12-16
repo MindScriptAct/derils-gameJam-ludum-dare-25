@@ -23,12 +23,18 @@ public class GuiHolder extends Sprite {
 	private var stageText:TextField;
 	private var capitalistFarmat24_left:TextFormat;
 	private var capitalistFarmat10:TextFormat;
+	private var capitalistFarmat36:TextFormat
+	public var nextStageLabel:TextField;;
 	
 	public function GuiHolder() {
+		
+		this.mouseChildren = false;
+		this.mouseEnabled = false;
 		
 		capitalistFarmat24 = new TextFormat('myBoldVerdana', 24, 0xFFFFFF, true, null, null, null, null, TextFormatAlign.CENTER);
 		capitalistFarmat24_left = new TextFormat('myBoldVerdana', 24, 0xFFFFFF, true, null, null, null, null, TextFormatAlign.LEFT);
 		capitalistFarmat10 = new TextFormat('myBoldVerdana', 14, 0x0000FF, true, null, null, null, null, TextFormatAlign.CENTER);
+		capitalistFarmat36 = new TextFormat('myBoldVerdana', 36, 0xFFFFFF, true, null, null, null, null, TextFormatAlign.LEFT);
 		
 		//var bankProgressBg:Shape = new Shape();
 		//bankProgressBg.graphics.beginFill(0xFFFFFF, 0.1);
@@ -66,7 +72,7 @@ public class GuiHolder extends Sprite {
 		
 		bankText = new TextField();
 		this.addChild(bankText);
-		bankText.text = "Press SPACE to bank!";
+		bankText.text = "Press [SPACE] to bank!";
 		bankText.embedFonts = true;
 		bankText.mouseEnabled = false;
 		
@@ -144,6 +150,23 @@ public class GuiHolder extends Sprite {
 		stageText.width = 200;
 		
 		stageText.setTextFormat(capitalistFarmat24_left);
+		
+		//----------------------------------
+		//     ENTER to advance next stage
+		//----------------------------------
+		
+		nextStageLabel = new TextField();
+		this.addChild(nextStageLabel);
+		nextStageLabel.text = "Press [ENTER] to go to next stage!";
+		nextStageLabel.autoSize = TextFieldAutoSize.LEFT;
+		nextStageLabel.embedFonts = true;
+		nextStageLabel.mouseEnabled = false;
+		nextStageLabel.x = GameConstants.GAME_WIDTH / 2 - 300
+		nextStageLabel.y = 200;
+		nextStageLabel.alpha = 0.9;
+		nextStageLabel.visible = false;
+		nextStageLabel.setTextFormat(capitalistFarmat36);
+		
 	}
 	
 	// TODO do this with messages...

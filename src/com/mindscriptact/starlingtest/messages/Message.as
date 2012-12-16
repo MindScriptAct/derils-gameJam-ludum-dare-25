@@ -21,6 +21,9 @@ public class Message {
 	
 	static public const SHOW_BANKSTER_READY_RANGE:String = "showBanksterReadyRange";
 	static public const HIDE_BANKSTER_READY_RANGE:String = "hideBanksterReadyRange";
+	
+	static public const SHOW_STAGE_DONE:String = "showStageDone";
+	static public const HIDE_STAGE_DONE:String = "hideStageDone";
 
 }
 }

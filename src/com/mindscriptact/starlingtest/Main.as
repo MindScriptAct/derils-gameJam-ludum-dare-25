@@ -20,17 +20,16 @@ public class Main extends Sprite {
 	//advancedAntiAliasing="true", //
 	//embedAsCFF="false")] //
 	//private var myEmbeddedFont:Class;
-
+	
 	//[Embed(systemFont="Verdana", //
-		//fontName="myVerdana", //
-		//mimeType="application/x-font", //
-		//fontWeight="normal", //
-		//fontStyle="normal", //
-		//advancedAntiAliasing="true", //
-		//embedAsCFF="false")] //
+	//fontName="myVerdana", //
+	//mimeType="application/x-font", //
+	//fontWeight="normal", //
+	//fontStyle="normal", //
+	//advancedAntiAliasing="true", //
+	//embedAsCFF="false")] //
 	//private var myVerdana:Class;
 	
-
 	[Embed(systemFont="Verdana", //
 		fontName="myBoldVerdana", //
 		mimeType="application/x-font", //
@@ -38,9 +37,9 @@ public class Main extends Sprite {
 		fontStyle="normal", //
 		advancedAntiAliasing="true", //
 		embedAsCFF="false")] //
-	private var myBoldVerdana:Class;	
+	private var myBoldVerdana:Class;
 	
-	
+	private var starlingTestModule:StarlingTestModule;
 	
 	public function Main():void {
 		if (stage)
@@ -57,11 +56,20 @@ public class Main extends Sprite {
 		this.stage.scaleMode = StageScaleMode.NO_SCALE;
 		this.stage.align = StageAlign.TOP_LEFT;
 		
-		MvcExpressLogger.init(this.stage, 1280, 0, 700, 400, 1, false);
-		
-		this.addChild(new Stats(400, 1290, 420, false, true, true));
 		//
-		var starlingTestModule:StarlingTestModule = new StarlingTestModule();
+		
+		CONFIG::debug {
+			MvcExpressLogger.init(this.stage, 1280, 0, 700, 400, 1, false);
+			this.addChild(new Stats(400, 1290, 420, false, true, true));
+			
+			starlingTestModule = new StarlingTestModule();
+			starlingTestModule.start(this);
+			
+			return;
+		}
+		this.addChild(new Stats(450, 0, 0, true, true, true));
+		
+		starlingTestModule = new StarlingTestModule();
 		starlingTestModule.start(this);
 	}
 

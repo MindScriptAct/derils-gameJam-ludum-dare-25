@@ -43,7 +43,13 @@ public class MoveEnemiesTask extends Task {
 			if (enemyVo.position.x < -GameConstants.ENEMY_SIZE || enemyVo.position.x > GameConstants.GAME_WIDTH + GameConstants.ENEMY_SIZE) {
 				// move to command
 				enemyVo.position.y = Math.floor(Math.random() * (GameConstants.GAME_HEIGHT - GameConstants.ENEMY_SIZE * 2)) + GameConstants.ENEMY_SIZE;
-				enemyVo.goRight = (enemyVo.position.x < GameConstants.GAME_WIDTH / 2)
+				enemyVo.goRight = (enemyVo.position.x < GameConstants.GAME_WIDTH / 2);
+				
+				enemyVo.moveSpeed += Math.random() * GameConstants.ENEMY_MOVE_SPEED_ACELERATE;
+				
+				if (enemyVo.moveSpeed > GameConstants.ENEMY_MOVE_SPEED_CAP) {
+					enemyVo.moveSpeed = GameConstants.ENEMY_MOVE_SPEED_CAP
+				}
 			}
 			if (enemyVo.position.y < GameConstants.ENEMY_SIZE || enemyVo.position.y > GameConstants.GAME_HEIGHT - GameConstants.ENEMY_SIZE) {
 				// move to command

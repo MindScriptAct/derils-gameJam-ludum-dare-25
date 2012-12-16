@@ -51,7 +51,9 @@ public class SpacePressedCammand extends PooledCommand {
 				}
 			}
 			guiProxy.addMoney(collectedMoney);
-			
+			if (guiProxy.isNeededMoneyCollected()) {
+				sendMessage(Message.SHOW_STAGE_DONE);
+			}
 		}
 	}
 

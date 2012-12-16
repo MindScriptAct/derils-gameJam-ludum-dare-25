@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.view.gui {
 import com.mindscriptact.starlingtest.messages.DataMessage;
+import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.gui.GuiProxy;
 import org.mvcexpress.mvc.Mediator;
 
@@ -20,6 +21,17 @@ public class GuiMediator extends Mediator {
 		
 		addHandler(DataMessage.MONEY_CHANGED, handleMoneyChange);
 		addHandler(DataMessage.GUI_STAGE_CHANGED, handleStageChange);
+		
+		addHandler(Message.SHOW_STAGE_DONE, handleShowStageDone);
+		addHandler(Message.HIDE_STAGE_DONE, handleHideStageDone);
+	}
+	
+	private function handleHideStageDone(blank:Object):void {
+		view.nextStageLabel.visible = false;
+	}
+	
+	private function handleShowStageDone(blank:Object):void {
+		view.nextStageLabel.visible = true;
 	}
 	
 	override public function onRemove():void {

@@ -34,19 +34,20 @@ public class MainMediator extends Mediator {
 		
 		mediatorMap.mediate(guiHolder);
 		
-		antialiasing = new HUISlider(view, 1300, 550, "Antialiasing", handleValueChange);
-		antialiasing.value = 1;
-		antialiasing.minimum = 0;
-		antialiasing.maximum = 16;
-		antialiasing.labelPrecision = 0;
-		
 		addStartScreen();
 		
-		var startButton:PushButton = new PushButton(view, 1300, 580, "START", handleStartGame);
-		
-		var addCommanButton:PushButton = new PushButton(view, 1400, 580, "ADD COMMONER", handleAddCommoner);
-		
 		addHandler(DataMessage.GUI_SCREEN_CHANGED, handleScreenChange);
+		
+		CONFIG::debug {
+			antialiasing = new HUISlider(view, 1300, 550, "Antialiasing", handleValueChange);
+			antialiasing.value = 1;
+			antialiasing.minimum = 0;
+			antialiasing.maximum = 16;
+			antialiasing.labelPrecision = 0;
+			
+			var startButton:PushButton = new PushButton(view, 1300, 580, "START", handleStartGame);
+			var addCommanButton:PushButton = new PushButton(view, 1400, 580, "ADD COMMONER", handleAddCommoner);
+		}
 	
 	}
 	
@@ -72,7 +73,7 @@ public class MainMediator extends Mediator {
 		view.addChild(gameOverScreen);
 		mediatorMap.mediate(gameOverScreen);
 		gameOverScreen.alpha = 0;
-		TweenMax.to(gameOverScreen, 3, { alpha: 1 } );
+		TweenMax.to(gameOverScreen, 3, {alpha: 1});
 	}
 	
 	private function removeStartScreen():void {

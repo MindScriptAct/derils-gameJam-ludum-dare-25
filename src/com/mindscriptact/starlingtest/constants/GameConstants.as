@@ -19,10 +19,13 @@ public class GameConstants {
 	
 	static public const ENEMY_MOVE_SPEED_BASE:int = 2;
 	static public const ENEMY_MOVE_SPEED_MODIFIER:int = 3;
+	static public const ENEMY_MOVE_SPEED_ACELERATE:Number = 0.5;
+	static public const ENEMY_MOVE_SPEED_CAP:Number = 50;
 	
 	static public const ENEMY_MENEY:int = 30;
 	
 	static public const ENEMY_TURN_OCUPY_TIME:int = 2000;
+	
 
 }
 }

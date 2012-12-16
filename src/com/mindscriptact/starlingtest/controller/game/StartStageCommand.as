@@ -45,6 +45,8 @@ public class StartStageCommand extends Command {
 		sendMessage(Message.ADD_COMMONER, stageConfigVo.commonEnemyCount);
 		
 		sendMessage(Message.HIDE_BANKSTER_READY_RANGE);
+		
+		sendMessage(Message.HIDE_STAGE_DONE);
 	}
 
 }
