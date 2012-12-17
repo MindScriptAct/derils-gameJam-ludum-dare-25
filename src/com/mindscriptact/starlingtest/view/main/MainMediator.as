@@ -6,6 +6,8 @@ import com.mindscriptact.starlingtest.constants.GameScreens;
 import com.mindscriptact.starlingtest.Main;
 import com.mindscriptact.starlingtest.messages.DataMessage;
 import com.mindscriptact.starlingtest.messages.Message;
+import com.mindscriptact.starlingtest.messages.ViewMessage;
+import com.mindscriptact.starlingtest.picLib.SoundLib;
 import com.mindscriptact.starlingtest.view.gui.GuiHolder;
 import flash.events.Event;
 import org.mvcexpress.mvc.Mediator;
@@ -18,6 +20,9 @@ public class MainMediator extends Mediator {
 	private var antialiasing:HUISlider;
 	private var startScreen:StartScreenSPR;
 	private var gameOverScreen:GameOverScreenSPR;
+	private var startSscreenFirstTime:Boolean = true;
+	private var tutorialScreen:StartScreenMC;
+	private var soundButton:PushButton;
 	
 	[Inject]
 	public var view:Main;
@@ -27,6 +32,9 @@ public class MainMediator extends Mediator {
 	
 	override public function onRegister():void {
 		
+		soundButton = new PushButton(view, 1220, 0, "SOUND:OFF", handleSoundOn);
+		soundButton.width = 60;
+		
 		var guiHolder:GuiHolder = new GuiHolder();
 		view.addChild(guiHolder);
 		
@@ -35,6 +43,8 @@ public class MainMediator extends Mediator {
 		addStartScreen();
 		
 		addHandler(DataMessage.GUI_SCREEN_CHANGED, handleScreenChange);
+		
+		addHandler(ViewMessage.START_TUTORIAL, handleStartTutorial);
 		
 		CONFIG::debug {
 			antialiasing = new HUISlider(view, 1300, 550, "Antialiasing", handleValueChange);
@@ -47,6 +57,15 @@ public class MainMediator extends Mediator {
 			var addCommanButton:PushButton = new PushButton(view, 1400, 580, "ADD COMMONER", handleAddCommoner);
 		}
 	
+	}
+	
+	public function handleSoundOn(event:Event):void {
+		if (SoundLib.enabled) {
+			soundButton.label = "SOUND:ON";
+		} else {
+			soundButton.label = "SOUND:OFF";
+		}
+		SoundLib.enabled = !SoundLib.enabled;
 	}
 	
 	public function handleScreenChange(screenId:String):void {
@@ -64,6 +83,11 @@ public class MainMediator extends Mediator {
 		startScreen = new StartScreenSPR();
 		view.addChild(startScreen);
 		mediatorMap.mediate(startScreen);
+		if (startSscreenFirstTime) {
+			startSscreenFirstTime = false;
+			tutorialScreen = new StartScreenMC();
+			startScreen.tutorialPraleHolder.addChild(tutorialScreen);
+		}
 	}
 	
 	private function addGameOverScreen():void {
@@ -76,9 +100,26 @@ public class MainMediator extends Mediator {
 	
 	private function removeStartScreen():void {
 		if (startScreen) {
+			if (tutorialScreen) {
+				tutorialScreen.stop();
+				startScreen.tutorialPraleHolder.removeChild(tutorialScreen);
+				tutorialScreen = null;
+			}
 			view.removeChild(startScreen);
 			mediatorMap.unmediate(startScreen);
 			startScreen = null;
+		}
+	}
+	
+	private function handleStartTutorial(blank:Object):void {
+		if (startScreen) {
+			if (tutorialScreen) {
+				tutorialScreen.gotoAndPlay(1);
+			} else {
+				tutorialScreen = new StartScreenMC();
+				startScreen.tutorialPraleHolder.addChild(tutorialScreen);
+			}
+			
 		}
 	}
 	

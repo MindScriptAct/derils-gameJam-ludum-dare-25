@@ -7,6 +7,7 @@ import com.mindscriptact.starlingtest.model.enemies.EnemyProxy;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
 import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import com.mindscriptact.starlingtest.model.gui.GuiProxy;
+import com.mindscriptact.starlingtest.picLib.SoundLib;
 import flash.geom.Point;
 import org.mvcexpress.mvc.PooledCommand;
 
@@ -28,6 +29,8 @@ public class SpacePressedCammand extends PooledCommand {
 	public function execute(keyCode:uint):void {
 		if (guiProxy.bankReady()) {
 			guiProxy.resetBankTimer();
+			
+			SoundLib.playRandomeEfect();
 			
 			var banksterPosition:Point = banksterProxy.getCurrentPosition();
 			

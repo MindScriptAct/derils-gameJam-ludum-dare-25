@@ -32,7 +32,14 @@ public class EnemyProxy extends Proxy {
 		
 		enemies.push(enemy);
 		
-		sendMessage(DataMessage.ENEMY_ADDED, new EnemySpawnParamsVo(enemy.id, enemyType, totalCoins));
+		var rightDirID:int = 0;
+		if (goRight) {
+			rightDirID = 1;
+		} else {
+			rightDirID = -1;
+		}
+		
+		sendMessage(DataMessage.ENEMY_ADDED, new EnemySpawnParamsVo(enemy.id, enemyType, totalCoins, rightDirID));
 	}
 	
 	override protected function onRegister():void {
@@ -66,7 +73,7 @@ public class EnemyProxy extends Proxy {
 				} else if (goDownInt == 1) {
 					enemies[i].goDown = true;
 				}
-				sendMessage(DataMessage.ENEMY_TYPE_CHANGE, new EnemySpawnParamsVo(id, newEnemyType, -1));
+				sendMessage(DataMessage.ENEMY_TYPE_CHANGE, new EnemySpawnParamsVo(id, newEnemyType, -1, 0));
 				break;
 			}
 		}
@@ -93,7 +100,7 @@ public class EnemyProxy extends Proxy {
 		for (var i:int = 0; i < enemies.length; i++) {
 			if (enemies[i].id == id) {
 				enemies[i].curentCoins--;
-				sendMessage(DataMessage.ENEMY_COIN_CHANGE, new EnemySpawnParamsVo(id, -1, enemies[i].curentCoins));
+				sendMessage(DataMessage.ENEMY_COIN_CHANGE, new EnemySpawnParamsVo(id, -1, enemies[i].curentCoins, 0));
 				break;
 			}
 		}

@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.engine.tasks {
 import com.mindscriptact.starlingtest.constants.GameConstants;
+import com.mindscriptact.starlingtest.model.bankster.BanksterDataVO;
 import flash.geom.Point;
 import flash.ui.Keyboard;
 import flash.utils.Dictionary;
@@ -12,23 +13,25 @@ import org.mvcexpress.live.Task;
 public class MoveBanksterTask extends Task {
 	
 	[Inject(name="bankster_Position")]
-	public var curentPosition:Point;
+	public var curentPosition:BanksterDataVO;
 	
 	[Inject(name="keyBoardRegistry")]
 	public var keyRegistry:Dictionary
 	
 	override public function run():void {
 		
-		if (keyRegistry[Keyboard.LEFT] == true) {
+		if (keyRegistry[Keyboard.LEFT] == true || keyRegistry[Keyboard.A] == true) {
 			curentPosition.x -= GameConstants.BANKSTA_MOVE_SPEED;
+			curentPosition.goRight = false;
 		}
-		if (keyRegistry[Keyboard.RIGHT] == true) {
+		if (keyRegistry[Keyboard.RIGHT] == true || keyRegistry[Keyboard.D] == true) {
 			curentPosition.x += GameConstants.BANKSTA_MOVE_SPEED;
+			curentPosition.goRight = true;
 		}
-		if (keyRegistry[Keyboard.UP] == true) {
+		if (keyRegistry[Keyboard.UP] == true || keyRegistry[Keyboard.W] == true) {
 			curentPosition.y -= GameConstants.BANKSTA_MOVE_SPEED;
 		}
-		if (keyRegistry[Keyboard.DOWN] == true) {
+		if (keyRegistry[Keyboard.DOWN] == true || keyRegistry[Keyboard.S] == true) {
 			curentPosition.y += GameConstants.BANKSTA_MOVE_SPEED;
 		}
 		

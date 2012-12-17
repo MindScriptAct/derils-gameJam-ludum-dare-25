@@ -8,7 +8,8 @@ import org.mvcexpress.mvc.Proxy;
  */
 public class BanksterProxy extends Proxy {
 	
-	private var curentPosition:Point = new Point();
+	private var curentPosition:BanksterDataVO = new BanksterDataVO();
+	
 	
 	public function BanksterProxy() {
 	}

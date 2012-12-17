@@ -2,6 +2,7 @@ package com.mindscriptact.starlingtest.engine.tasks {
 import com.mindscriptact.starlingtest.constants.EnemyTypes;
 import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.messages.Message;
+import com.mindscriptact.starlingtest.model.bankster.BanksterDataVO;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
 import com.mindscriptact.starlingtest.model.gui.BankTimeVO;
 import flash.geom.Point;
@@ -14,7 +15,7 @@ import org.mvcexpress.live.Task;
 public class ColideWithEnemies extends Task {
 	
 	[Inject(name="bankster_Position")]
-	public var curentPosition:Point;
+	public var curentPosition:BanksterDataVO;
 	
 	[Inject(name="enemies_data")]
 	public var enemies:Vector.<EnemyVO>

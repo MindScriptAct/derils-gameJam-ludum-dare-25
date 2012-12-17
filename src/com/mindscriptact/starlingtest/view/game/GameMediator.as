@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.view.game {
 import com.greensock.loading.CSSLoader;
+import com.greensock.TweenMax;
 import com.mindscriptact.starlingtest.constants.EnemyTypes;
 import com.mindscriptact.starlingtest.messages.DataMessage;
 import com.mindscriptact.starlingtest.messages.Message;
@@ -25,12 +26,10 @@ public class GameMediator extends Mediator {
 	[Inject]
 	public var view:Game;
 	
-	//[Inject]
-	//public var myProxy:MyProxy;
+	//[Embed(source="/pics/santa.png")]
+	//private const santaAtlasBitmap:Class;
+	//private var mMovie:MovieClip;
 	
-	[Embed(source="/pics/santa.png")]
-	private const santaAtlasBitmap:Class;
-	private var mMovie:MovieClip;
 	private var gamePlayerHolder:Sprite;
 	
 	[Provide(name="enemie_components")]
@@ -134,6 +133,9 @@ public class GameMediator extends Mediator {
 		gamePlayerHolder.addChildAt(enemy, 0);
 		enemy.x = -200;
 		enemyImages.push(enemy);
+		if (enemySpawnVo.rightDirId != 0) {
+			enemy.scaleX = enemySpawnVo.rightDirId;
+		}
 		
 		var enemyCoins:CoinSprite = new CoinSprite(enemySpawnVo.id, enemySpawnVo.totalCoins);
 		gamePlayerHolder.addChild(enemyCoins);
@@ -164,9 +166,16 @@ public class GameMediator extends Mediator {
 	
 	private function handleShowBanksterReady(blank:Object):void {
 		banksterReady.visible = true;
+		banksterReady.scaleX = 1;
+		banksterReady.scaleY = 1;
 	}
 	
 	private function handleHideBanksterReady(blank:Object):void {
+		//banksterReady.visible = false;
+		TweenMax.to(banksterReady, 0.5, {scaleX: 0.1, scaleY: 0.1, onComplete: realyHideBanksterReady});
+	}
+	
+	private function realyHideBanksterReady():void {
 		banksterReady.visible = false;
 	}
 	

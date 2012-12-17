@@ -48,7 +48,7 @@ public class MoveEnemiesTask extends Task {
 				enemyVo.moveSpeed += Math.random() * GameConstants.ENEMY_MOVE_SPEED_ACELERATE;
 				
 				if (enemyVo.moveSpeed > GameConstants.ENEMY_MOVE_SPEED_CAP) {
-					enemyVo.moveSpeed = GameConstants.ENEMY_MOVE_SPEED_CAP
+					enemyVo.moveSpeed = GameConstants.ENEMY_MOVE_SPEED_CAP;
 				}
 			}
 			if (enemyVo.position.y < GameConstants.ENEMY_SIZE || enemyVo.position.y > GameConstants.GAME_HEIGHT - GameConstants.ENEMY_SIZE) {

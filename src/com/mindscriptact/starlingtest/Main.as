@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest {
 import com.mindscriptact.mvcExpressLogger.MvcExpressLogger;
+import com.mindscriptact.starlingtest.picLib.SoundLib;
 import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
@@ -50,6 +51,8 @@ public class Main extends Sprite {
 	
 	private function init(e:Event = null):void {
 		
+		SoundLib.getInstance();
+		
 		removeEventListener(Event.ADDED_TO_STAGE, init);
 		// entry point
 		
@@ -71,6 +74,8 @@ public class Main extends Sprite {
 		
 		starlingTestModule = new StarlingTestModule();
 		starlingTestModule.start(this);
+		
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.engine.tasks {
 import com.mindscriptact.starlingtest.messages.Message;
+import com.mindscriptact.starlingtest.model.bankster.BanksterDataVO;
 import com.mindscriptact.starlingtest.view.game.elements.SingleCoinImage;
 import flash.geom.Point;
 import org.mvcexpress.live.Task;
@@ -12,7 +13,7 @@ import starling.display.Image;
 public class CoinImageTweenTask extends Task {
 	
 	[Inject(name="bankster_Position")]
-	public var curentPosition:Point;
+	public var curentPosition:BanksterDataVO;
 	
 	[Inject(name="coin_items_components")]
 	public var coinItemImages:Vector.<SingleCoinImage>;

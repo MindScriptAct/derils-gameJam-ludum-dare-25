@@ -1,5 +1,6 @@
 package com.mindscriptact.starlingtest.view.main.screens {
 import com.mindscriptact.starlingtest.messages.Message;
+import com.mindscriptact.starlingtest.messages.ViewMessage;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.net.navigateToURL;
@@ -23,12 +24,20 @@ public class StartScreenMediator extends Mediator {
 		
 		addListener(view.startGameButton, MouseEvent.CLICK, handleStartGame);
 		
+		addListener(view.startTutorial, MouseEvent.CLICK, handleStartTutorial);
+		
+		
+		
 		addListener(view.flashButton, MouseEvent.CLICK, handleFlashLinkButton);
 		addListener(view.mvcExpressButton, MouseEvent.CLICK, handleExpressLinkButton);
 		addListener(view.starlingButton, MouseEvent.CLICK, handleStarlingLinkButton);
 		addListener(view.blogButton, MouseEvent.CLICK, handleBlogLinkButton);
 		addListener(view.twitterButton, MouseEvent.CLICK, handleTwitterLinkButton);
 	
+	}
+	
+	private function handleStartTutorial(event:MouseEvent):void {
+		sendMessage(ViewMessage.START_TUTORIAL);
 	}
 	
 	private function handleFlashLinkButton(event:MouseEvent):void {
