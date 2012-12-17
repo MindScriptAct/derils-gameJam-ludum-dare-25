@@ -3,7 +3,6 @@ import com.mindscriptact.starlingtest.constants.EnemyTypes;
 import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.model.enemies.EnemyProxy;
 import flash.geom.Point;
-import org.mvcexpress.mvc.Command;
 import org.mvcexpress.mvc.PooledCommand;
 
 /**
@@ -31,7 +30,6 @@ public class AddCommonerCammand extends PooledCommand {
 			
 			var moveSpeed:Number = GameConstants.ENEMY_MOVE_SPEED_BASE;
 			moveSpeed += Math.random() * GameConstants.ENEMY_MOVE_SPEED_MODIFIER;
-			
 			
 			position.y = Math.floor(Math.random() * (GameConstants.GAME_HEIGHT - GameConstants.ENEMY_SIZE * 2)) + GameConstants.ENEMY_SIZE;
 			

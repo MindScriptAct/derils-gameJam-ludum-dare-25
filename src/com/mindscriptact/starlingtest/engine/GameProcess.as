@@ -18,7 +18,6 @@ import org.mvcexpress.live.Task;
  */
 public class GameProcess extends Process {
 	
-	
 	override public function onRegister():void {
 		
 		var headTask:Task = this.mapTask(HeadTask);
@@ -28,21 +27,14 @@ public class GameProcess extends Process {
 		
 		var moveBanksterTask:Task = this.mapTask(MoveBanksterTask);
 		var moveEnemiesTask:Task = this.mapTask(MoveEnemiesTask);
-
-		
-		
 		
 		var tweenCoinItems:Task = this.mapTask(CoinImageTweenTask);
 		
 		var movecViewElements:Task = this.mapTask(MoveViewElementTask);
 		
-		
 		var colideWithEnemies:Task = this.mapTask(ColideWithEnemies);
 		
 		var renderGuiTask:Task = this.mapTask(RenderGuiTask);
-		
-		
-		
 		
 		this.addTask(headTask);
 		
@@ -59,7 +51,6 @@ public class GameProcess extends Process {
 		
 		this.addTask(renderGuiTask);
 		
-		
 		addHandler(Message.START_GAME, handleStartGame);
 		addHandler(Message.GAME_OVER, handleGameOver);
 	}
@@ -71,8 +62,6 @@ public class GameProcess extends Process {
 	private function handleStartGame(blank:Object):void {
 		this.startProcess();
 	}
-	
-
 
 }
 }

@@ -5,13 +5,13 @@ package com.mindscriptact.starlingtest.messages {
  * @author Raimundas Banevicius (http://mvcexpress.org)
  */
 public class DataMessage {
-static public const ENEMY_ADDED:String = "enemyAdded";
-static public const MONEY_CHANGED:String = "moneyChanged";
-static public const ENEMY_TYPE_CHANGE:String = "enemyTypeChange";
-static public const GUI_SCREEN_CHANGED:String = "guiScreenChanged";
-static public const REMOVE_ALL_ENEMIES:String = "removeAllEnemies";
-static public const GUI_STAGE_CHANGED:String = "guiStageChanged";
-static public const SCORED_MONEY_CHANGED:String = "scoredMoneyChanged";
-static public const ENEMY_COIN_CHANGE:String = "enemyCoinChange";
+	static public const ENEMY_ADDED:String = "enemyAdded";
+	static public const MONEY_CHANGED:String = "moneyChanged";
+	static public const ENEMY_TYPE_CHANGE:String = "enemyTypeChange";
+	static public const GUI_SCREEN_CHANGED:String = "guiScreenChanged";
+	static public const REMOVE_ALL_ENEMIES:String = "removeAllEnemies";
+	static public const GUI_STAGE_CHANGED:String = "guiStageChanged";
+	static public const SCORED_MONEY_CHANGED:String = "scoredMoneyChanged";
+	static public const ENEMY_COIN_CHANGE:String = "enemyCoinChange";
 }
 }

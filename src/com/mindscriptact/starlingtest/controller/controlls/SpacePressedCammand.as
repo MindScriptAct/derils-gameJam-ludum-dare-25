@@ -5,7 +5,6 @@ import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.bankster.BanksterProxy;
 import com.mindscriptact.starlingtest.model.enemies.EnemyProxy;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
-import com.mindscriptact.starlingtest.model.enemies.params.EnemySpawnParamsVo;
 import com.mindscriptact.starlingtest.model.gui.GuiProxy;
 import com.mindscriptact.starlingtest.picLib.SoundLib;
 import flash.geom.Point;

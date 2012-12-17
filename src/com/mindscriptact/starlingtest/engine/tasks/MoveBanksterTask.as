@@ -1,7 +1,6 @@
 package com.mindscriptact.starlingtest.engine.tasks {
 import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.model.bankster.BanksterDataVO;
-import flash.geom.Point;
 import flash.ui.Keyboard;
 import flash.utils.Dictionary;
 import org.mvcexpress.live.Task;

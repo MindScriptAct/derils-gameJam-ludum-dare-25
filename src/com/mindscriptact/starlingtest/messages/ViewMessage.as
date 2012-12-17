@@ -5,6 +5,6 @@ package com.mindscriptact.starlingtest.messages {
  * @author Raimundas Banevicius (http://mvcexpress.org)
  */
 public class ViewMessage {
-static public const START_TUTORIAL:String = "startTutorial";
+	static public const START_TUTORIAL:String = "startTutorial";
 }
 }

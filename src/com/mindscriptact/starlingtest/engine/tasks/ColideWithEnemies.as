@@ -4,8 +4,6 @@ import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.bankster.BanksterDataVO;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
-import com.mindscriptact.starlingtest.model.gui.BankTimeVO;
-import flash.geom.Point;
 import org.mvcexpress.live.Task;
 
 /**

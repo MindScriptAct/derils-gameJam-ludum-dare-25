@@ -16,7 +16,7 @@ public class Message {
 	static public const CHANGE_ENEMY_TYPE:String = "changeEnemyType";
 	static public const GAME_OVER:String = "gameOver";
 	static public const RESET_GAME:String = "resetGame";
-
+	
 	static public const START_STAGE:String = "startStage";
 	
 	static public const SHOW_BANKSTER_READY_RANGE:String = "showBanksterReadyRange";

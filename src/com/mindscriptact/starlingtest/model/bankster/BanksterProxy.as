@@ -10,7 +10,6 @@ public class BanksterProxy extends Proxy {
 	
 	private var curentPosition:BanksterDataVO = new BanksterDataVO();
 	
-	
 	public function BanksterProxy() {
 	}
 	

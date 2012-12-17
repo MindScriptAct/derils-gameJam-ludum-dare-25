@@ -11,7 +11,6 @@ import org.mvcexpress.mvc.Proxy;
  */
 public class GuiProxy extends Proxy {
 	
-	
 	private var screenId:String = GameScreens.START_SCREEN;
 	
 	private var stageId:int;

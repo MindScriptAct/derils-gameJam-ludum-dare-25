@@ -1,5 +1,4 @@
 package com.mindscriptact.starlingtest.picLib {
-import com.bit101.components.Calendar;
 import com.mindscriptact.starlingUtils.easyTextures.EasyTextureGenerator;
 import flash.display.Bitmap;
 import flash.display.BitmapData;

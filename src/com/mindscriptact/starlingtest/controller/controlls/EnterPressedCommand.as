@@ -1,5 +1,4 @@
 package com.mindscriptact.starlingtest.controller.controlls {
-import com.mindscriptact.starlingtest.constants.EnemyTypes;
 import com.mindscriptact.starlingtest.constants.GameScreens;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.gui.GuiProxy;

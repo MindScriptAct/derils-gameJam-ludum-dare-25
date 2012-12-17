@@ -7,8 +7,6 @@ import flash.geom.Point;
  */
 public class EnemyVO {
 	
-	
-	
 	static private var enemyCount:int = 0;
 	
 	public var id:int = enemyCount++;
@@ -25,7 +23,6 @@ public class EnemyVO {
 	public var moneyPerc:Number;
 	public var timeRemaining:int;
 	public var lastTimer:uint;
-
 
 }
 }

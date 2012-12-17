@@ -1,10 +1,7 @@
 package com.mindscriptact.starlingtest.view.main.screens {
-import com.bit101.components.PushButton;
-import com.greensock.data.TweenMaxVars;
 import com.greensock.TweenMax;
 import com.mindscriptact.starlingtest.messages.Message;
 import com.mindscriptact.starlingtest.model.gui.GuiProxy;
-import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.text.TextField;
 import flash.text.TextFormat;

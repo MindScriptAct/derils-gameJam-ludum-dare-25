@@ -30,7 +30,6 @@ public class GameConstants {
 	static public const ENTER_KEY_DISABLE_TIME:int = 1500;
 	
 	static public const BANKING_COST:int = 1;
-	
 
 }
 }

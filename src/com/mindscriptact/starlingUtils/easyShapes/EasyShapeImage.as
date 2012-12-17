@@ -31,8 +31,6 @@ public class EasyShapeImage extends Image {
 			texture = Texture.fromBitmapData(bitmapData);
 		}
 		
-
-		
 		super(texture);
 		
 		if (center) {

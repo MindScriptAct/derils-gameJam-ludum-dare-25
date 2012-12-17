@@ -1,6 +1,5 @@
 package com.mindscriptact.starlingtest.engine.tasks {
-	import org.mvcexpress.live.Task;
-	
+import org.mvcexpress.live.Task;
 
 /**
  * COMMENT
@@ -11,6 +10,6 @@ public class HeadTask extends Task {
 	override public function run():void {
 		//trace( "HeadTask.run" );
 	}
-	
+
 }
 }

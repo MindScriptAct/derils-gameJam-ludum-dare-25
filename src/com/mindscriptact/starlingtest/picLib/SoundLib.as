@@ -1,4 +1,6 @@
 package com.mindscriptact.starlingtest.picLib {
+import flash.media.SoundMixer;
+import flash.media.SoundTransform;
 import flash.utils.Dictionary;
 
 /**
@@ -40,15 +42,22 @@ public class SoundLib {
 	static public function getInstance():SoundLib {
 		if (!instance) {
 			instance = new SoundLib();
+			setSoundVolume();
 		}
 		return instance;
+	}
+	
+	static public function setSoundVolume():void {
+		var saundTransform:SoundTransform = SoundMixer.soundTransform;
+		saundTransform.volume = 0.4;
+		SoundMixer.soundTransform = saundTransform;
 	}
 	
 	// TODO : FIX>>>!!!
 	
 	static public function playRandomeEfect():void {
 		if (SoundLib.enabled) {
-			
+			setSoundVolume();
 			var index:int = Math.floor(Math.random() * 5);
 			
 			switch (index) {
@@ -75,7 +84,7 @@ public class SoundLib {
 	static public function playRandomeFinisher():void {
 		if (SoundLib.enabled) {
 			var index:int = Math.floor(Math.random() * 4);
-			
+			setSoundVolume();
 			switch (index) {
 				case 0: 
 					instance.soundLib[SoundLib.FINISH1].play();

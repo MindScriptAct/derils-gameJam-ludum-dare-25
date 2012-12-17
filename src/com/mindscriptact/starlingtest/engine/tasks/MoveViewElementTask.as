@@ -3,10 +3,8 @@ import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingtest.model.bankster.BanksterDataVO;
 import com.mindscriptact.starlingtest.model.enemies.EnemyVO;
 import com.mindscriptact.starlingtest.view.game.elements.BankActionReadyImage;
-import com.mindscriptact.starlingtest.view.game.elements.BanksterImage;
 import com.mindscriptact.starlingtest.view.game.elements.CoinSprite;
 import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
-import flash.geom.Point;
 import org.mvcexpress.live.Task;
 import starling.display.Image;
 
