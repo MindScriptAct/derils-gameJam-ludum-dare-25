@@ -13,6 +13,7 @@ import com.mindscriptact.starlingtest.view.game.elements.EnemySprite;
 import com.mindscriptact.starlingtest.view.game.elements.SingleCoinImage;
 import com.mindscriptact.starlingUtils.easySprites.EasyBackgroundSprite;
 import org.mvcexpress.mvc.Mediator;
+import starling.display.BlendMode;
 import starling.display.Image;
 import starling.display.MovieClip;
 import starling.display.Sprite;
@@ -49,7 +50,12 @@ public class GameMediator extends Mediator {
 	
 	override public function onRegister():void {
 		
+		// disable touche for objects.
+		view.touchable = false;
+		
+		
 		var bg:EasyBackgroundSprite = new EasyBackgroundSprite(PicResources.getTexture(PicResources.DIRT_ID), 3, 2);
+		bg.blendMode = BlendMode.NONE;
 		view.addChild(bg);
 		
 		// TODO mediate...

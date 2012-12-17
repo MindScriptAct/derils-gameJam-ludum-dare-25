@@ -1,5 +1,4 @@
 package com.mindscriptact.starlingtest.view.game.elements {
-import com.mindscriptact.starlingtest.constants.GameConstants;
 import com.mindscriptact.starlingUtils.easyShapes.EasyRectangeImage;
 
 /**

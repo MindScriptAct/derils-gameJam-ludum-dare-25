@@ -17,7 +17,7 @@ public class StarlingMediator extends Mediator {
 	//public var myProxy:MyProxy;
 	
 	override public function onRegister():void {
-		view.antiAliasing = 1;
+		view.antiAliasing = 0;
 		view.start();
 		CONFIG::debug {
 			view.showStats = true;
@@ -26,6 +26,7 @@ public class StarlingMediator extends Mediator {
 		view.addEventListener(Event.ROOT_CREATED, handleRootCreated);
 		
 		addHandler(Message.STARLING_ANTIALIASING_CHANGE, handleAntialiasingChange);
+		
 	}
 	
 	private function handleAntialiasingChange(antialiasing:int):void {

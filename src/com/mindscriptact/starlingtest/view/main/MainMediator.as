@@ -10,6 +10,9 @@ import com.mindscriptact.starlingtest.messages.ViewMessage;
 import com.mindscriptact.starlingtest.picLib.SoundLib;
 import com.mindscriptact.starlingtest.view.gui.GuiHolder;
 import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.media.SoundMixer;
+import flash.media.SoundTransform;
 import org.mvcexpress.mvc.Mediator;
 
 /**
@@ -22,7 +25,8 @@ public class MainMediator extends Mediator {
 	private var gameOverScreen:GameOverScreenSPR;
 	private var startSscreenFirstTime:Boolean = true;
 	private var tutorialScreen:StartScreenMC;
-	private var soundButton:PushButton;
+	private var soundControll:SoundControllsMC;
+	private var currentPosition:int = 2;
 	
 	[Inject]
 	public var view:Main;
@@ -32,8 +36,16 @@ public class MainMediator extends Mediator {
 	
 	override public function onRegister():void {
 		
-		soundButton = new PushButton(view, 1220, 0, "SOUND:OFF", handleSoundOn);
-		soundButton.width = 60;
+		soundControll = new SoundControllsMC();
+		view.addChild(soundControll);
+		soundControll.x = 1190;
+		setSound(currentPosition);
+		
+		soundControll.sndBtn0.addEventListener(MouseEvent.CLICK, handleSetSound0);
+		soundControll.sndBtn1.addEventListener(MouseEvent.CLICK, handleSetSound1);
+		soundControll.sndBtn2.addEventListener(MouseEvent.CLICK, handleSetSound2);
+		soundControll.sndBtn3.addEventListener(MouseEvent.CLICK, handleSetSound3);
+		soundControll.sndBtn4.addEventListener(MouseEvent.CLICK, handleSetSound4);
 		
 		var guiHolder:GuiHolder = new GuiHolder();
 		view.addChild(guiHolder);
@@ -56,16 +68,6 @@ public class MainMediator extends Mediator {
 			var startButton:PushButton = new PushButton(view, 1300, 580, "START", handleStartGame);
 			var addCommanButton:PushButton = new PushButton(view, 1400, 580, "ADD COMMONER", handleAddCommoner);
 		}
-	
-	}
-	
-	public function handleSoundOn(event:Event):void {
-		if (SoundLib.enabled) {
-			soundButton.label = "SOUND:ON";
-		} else {
-			soundButton.label = "SOUND:OFF";
-		}
-		SoundLib.enabled = !SoundLib.enabled;
 	}
 	
 	public function handleScreenChange(screenId:String):void {
@@ -81,6 +83,14 @@ public class MainMediator extends Mediator {
 	
 	private function addStartScreen():void {
 		startScreen = new StartScreenSPR();
+		startScreen.soundControlls.gotoAndStop(currentPosition);
+		
+		startScreen.soundControlls.sndBtn0.addEventListener(MouseEvent.CLICK, handleSetSound0);
+		startScreen.soundControlls.sndBtn1.addEventListener(MouseEvent.CLICK, handleSetSound1);
+		startScreen.soundControlls.sndBtn2.addEventListener(MouseEvent.CLICK, handleSetSound2);
+		startScreen.soundControlls.sndBtn3.addEventListener(MouseEvent.CLICK, handleSetSound3);
+		startScreen.soundControlls.sndBtn4.addEventListener(MouseEvent.CLICK, handleSetSound4);
+		
 		view.addChild(startScreen);
 		mediatorMap.mediate(startScreen);
 		if (startSscreenFirstTime) {
@@ -105,6 +115,13 @@ public class MainMediator extends Mediator {
 				startScreen.tutorialPraleHolder.removeChild(tutorialScreen);
 				tutorialScreen = null;
 			}
+			
+			startScreen.soundControlls.sndBtn0.removeEventListener(MouseEvent.CLICK, handleSetSound0);
+			startScreen.soundControlls.sndBtn1.removeEventListener(MouseEvent.CLICK, handleSetSound1);
+			startScreen.soundControlls.sndBtn2.removeEventListener(MouseEvent.CLICK, handleSetSound2);
+			startScreen.soundControlls.sndBtn3.removeEventListener(MouseEvent.CLICK, handleSetSound3);
+			startScreen.soundControlls.sndBtn4.removeEventListener(MouseEvent.CLICK, handleSetSound4);
+			
 			view.removeChild(startScreen);
 			mediatorMap.unmediate(startScreen);
 			startScreen = null;
@@ -146,6 +163,37 @@ public class MainMediator extends Mediator {
 	
 	override public function onRemove():void {
 	
+	}
+	
+	private function handleSetSound0(event:Event):void {
+		setSound(1)
+	}
+	
+	private function handleSetSound1(event:Event):void {
+		setSound(2)
+	}
+	
+	private function handleSetSound2(event:Event):void {
+		setSound(3)
+	}
+	
+	private function handleSetSound3(event:Event):void {
+		setSound(4)
+	}
+	
+	private function handleSetSound4(event:Event):void {
+		setSound(5)
+	}
+	
+	private function setSound(currentPosition:int):void {
+		this.currentPosition = currentPosition;
+		soundControll.gotoAndStop(currentPosition);
+		if (startScreen) {
+			startScreen.soundControlls.gotoAndStop(currentPosition);
+		}
+		var saundTransform:SoundTransform = SoundMixer.soundTransform;
+		saundTransform.volume = (currentPosition - 1) * 0.5;
+		SoundMixer.soundTransform = saundTransform;
 	}
 
 }

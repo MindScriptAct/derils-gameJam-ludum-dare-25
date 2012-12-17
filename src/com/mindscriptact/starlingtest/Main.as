@@ -11,6 +11,8 @@ import utils.debug.Stats;
  * ...
  * @author rBanevicius
  */
+[Frame(factoryClass="com.mindscriptact.starlingtest.Preloader")]
+
 public class Main extends Sprite {
 	
 	//[Embed(source="/fonts/capitalist.ttf", //

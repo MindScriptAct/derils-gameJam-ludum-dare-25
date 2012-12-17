@@ -1,5 +1,4 @@
 package com.mindscriptact.starlingtest.view.game.elements {
-import com.mindscriptact.starlingtest.constants.EnemyTypes;
 import com.mindscriptact.starlingtest.picLib.PicResources;
 import starling.display.Image;
 import starling.display.Sprite;
