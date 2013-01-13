@@ -72,7 +72,7 @@ public class Main extends Sprite {
 			
 			return;
 		}
-		this.addChild(new Stats(400, 0, 0, true, true, true));
+		//this.addChild(new Stats(400, 0, 0, true, true, true));
 		
 		starlingTestModule = new StarlingTestModule();
 		starlingTestModule.start(this);
