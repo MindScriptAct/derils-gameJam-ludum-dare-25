@@ -17,6 +17,7 @@
   <classpaths>
     <class path="src" />
     <class path="libSrc" />
+    <class path="mvcLoger" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -41,7 +42,7 @@
     <option linkReport="" />
     <option loadExterns="" />
     <option staticLinkRSL="True" />
-    <option additional="-keep-as3-metadata+=Inject,Provide&#xA;-define=CONFIG::debug,false&#xA;-define=CONFIG::mvcExpressLive,true" />
+    <option additional="-keep-as3-metadata+=Inject" />
     <option compilerConstants="" />
     <option minorVersion="" />
   </build>
@@ -52,6 +53,7 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="assets\assets.swc" />
+    <element path="lib\mvcExpress-live-debug_v1_3_1_BETA.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

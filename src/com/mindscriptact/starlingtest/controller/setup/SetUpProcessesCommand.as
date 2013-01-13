@@ -8,11 +8,9 @@ import org.mvcexpress.mvc.Command;
  */
 public class SetUpProcessesCommand extends Command {
 	
-	//[Inject]
-	//public var myProxy:MyProxy;
-	
 	public function execute(blank:Object):void {
 		processMap.mapFrameProcess(GameProcess);
+		processMap.startProcess(GameProcess);
 	}
 
 }

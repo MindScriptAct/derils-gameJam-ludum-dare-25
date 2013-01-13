@@ -29,7 +29,7 @@ public class GuiProxy extends Proxy {
 	}
 	
 	override protected function onRegister():void {
-		processMap.provide(bankTime, "gui_bank_timer");
+		provide(bankTime, "gui_bank_timer");
 	}
 	
 	override protected function onRemove():void {

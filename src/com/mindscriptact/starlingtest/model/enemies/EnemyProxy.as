@@ -11,7 +11,6 @@ import org.mvcexpress.mvc.Proxy;
  */
 public class EnemyProxy extends Proxy {
 	
-	[Provide(name="enemies_data")]
 	public var enemies:Vector.<EnemyVO> = new Vector.<EnemyVO>();
 	
 	public function EnemyProxy() {
@@ -43,7 +42,7 @@ public class EnemyProxy extends Proxy {
 	}
 	
 	override protected function onRegister():void {
-	
+		provide(enemies, "enemies_data");
 	}
 	
 	override protected function onRemove():void {

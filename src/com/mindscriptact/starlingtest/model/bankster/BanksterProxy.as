@@ -14,7 +14,7 @@ public class BanksterProxy extends Proxy {
 	}
 	
 	override protected function onRegister():void {
-		processMap.provide(curentPosition, "bankster_Position");
+		provide(curentPosition, "bankster_Position");
 	}
 	
 	override protected function onRemove():void {

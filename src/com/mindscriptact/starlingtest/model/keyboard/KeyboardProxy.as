@@ -12,7 +12,6 @@ import org.mvcexpress.mvc.Proxy;
 public class KeyboardProxy extends Proxy {
 	private var stage:Stage;
 	
-	[Provide(name="keyBoardRegistry")]
 	public var keyRegistry:Dictionary = new Dictionary();
 	
 	private var messageKeysRegistry:Dictionary = new Dictionary();
@@ -32,6 +31,8 @@ public class KeyboardProxy extends Proxy {
 	override protected function onRegister():void {
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyPressedDown);
 		stage.addEventListener(KeyboardEvent.KEY_UP, handleKeyPressedUp);
+		
+		provide(keyRegistry, "keyBoardRegistry");
 	}
 	
 	override protected function onRemove():void {

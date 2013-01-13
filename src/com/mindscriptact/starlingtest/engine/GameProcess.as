@@ -10,7 +10,6 @@ import com.mindscriptact.starlingtest.engine.tasks.MoveViewElementTask;
 import com.mindscriptact.starlingtest.engine.tasks.RenderGuiTask;
 import com.mindscriptact.starlingtest.messages.Message;
 import org.mvcexpress.live.Process;
-import org.mvcexpress.live.Task;
 
 /**
  * COMMENT
@@ -18,38 +17,22 @@ import org.mvcexpress.live.Task;
  */
 public class GameProcess extends Process {
 	
-	override public function onRegister():void {
+	override protected function onRegister():void {
 		
-		var headTask:Task = this.mapTask(HeadTask);
+		this.addTask(HeadTask);
 		
-		var calculateBankTimerTask:Task = this.mapTask(CalculateBankTimerTask);
-		var calculateEnemyTimerTask:Task = this.mapTask(CalculateEnemyTimerTask);
+		this.addTask(CalculateBankTimerTask);
+		this.addTask(CalculateEnemyTimerTask);
 		
-		var moveBanksterTask:Task = this.mapTask(MoveBanksterTask);
-		var moveEnemiesTask:Task = this.mapTask(MoveEnemiesTask);
+		this.addTask(MoveBanksterTask);
+		this.addTask(MoveEnemiesTask);
 		
-		var tweenCoinItems:Task = this.mapTask(CoinImageTweenTask);
+		this.addTask(CoinImageTweenTask);
+		this.addTask(MoveViewElementTask);
 		
-		var movecViewElements:Task = this.mapTask(MoveViewElementTask);
+		this.addTask(ColideWithEnemies);
 		
-		var colideWithEnemies:Task = this.mapTask(ColideWithEnemies);
-		
-		var renderGuiTask:Task = this.mapTask(RenderGuiTask);
-		
-		this.addTask(headTask);
-		
-		this.addTask(calculateBankTimerTask);
-		this.addTask(calculateEnemyTimerTask);
-		
-		this.addTask(moveBanksterTask);
-		this.addTask(moveEnemiesTask);
-		
-		this.addTask(tweenCoinItems);
-		this.addTask(movecViewElements);
-		
-		this.addTask(colideWithEnemies);
-		
-		this.addTask(renderGuiTask);
+		this.addTask(RenderGuiTask);
 		
 		addHandler(Message.START_GAME, handleStartGame);
 		addHandler(Message.GAME_OVER, handleGameOver);

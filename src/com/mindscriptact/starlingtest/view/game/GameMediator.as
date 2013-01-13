@@ -33,11 +33,11 @@ public class GameMediator extends Mediator {
 	
 	private var gamePlayerHolder:Sprite;
 	
-	[Provide(name="enemie_components")]
+
 	public var enemyImages:Vector.<EnemySprite> = new Vector.<EnemySprite>();
-	[Provide(name="enemie_bar_components")]
+
 	public var enemyCoinImages:Vector.<CoinSprite> = new Vector.<CoinSprite>();
-	[Provide(name="coin_items_components")]
+
 	public var coinItemImages:Vector.<SingleCoinImage> = new Vector.<SingleCoinImage>();
 	
 	public var bankster:Image;
@@ -52,7 +52,6 @@ public class GameMediator extends Mediator {
 		
 		// disable touche for objects.
 		view.touchable = false;
-		
 		
 		var bg:EasyBackgroundSprite = new EasyBackgroundSprite(PicResources.getTexture(PicResources.DIRT_ID), 3, 2);
 		bg.blendMode = BlendMode.NONE;
@@ -69,11 +68,13 @@ public class GameMediator extends Mediator {
 		gamePlayerHolder.addChild(bankster);
 		bankster.pivotX = bankster.width >> 1;
 		bankster.pivotY = bankster.height >> 1;
-		processMap.provide(bankster, "bankster_component");
+		
+		provide(bankster, "bankster_component");
 		
 		banksterReady = new BankActionReadyImage();
 		gamePlayerHolder.addChild(banksterReady);
-		processMap.provide(banksterReady, "bankster_ready_component");
+		
+		provide(banksterReady, "bankster_ready_component");
 		banksterReady.visible = false;
 		
 		addHandler(DataMessage.ENEMY_ADDED, handleAddEnemy);
@@ -85,9 +86,13 @@ public class GameMediator extends Mediator {
 		addHandler(Message.HIDE_BANKSTER_READY_RANGE, handleHideBanksterReady);
 		
 		addHandler(Message.REMOVE_COIN_ITEM, handleRemoveCoinItem);
-	
+		
 		//var enemy:EnemySprite = new EnemySprite(0, EnemyTypes.OCCUPYER);
 		//gamePlayerHolder.addChildAt(enemy, 0);
+		
+		provide(enemyImages, "enemie_components");
+		provide(enemyCoinImages, "enemie_bar_components");
+		provide(coinItemImages, "coin_items_components");
 	
 	}
 	

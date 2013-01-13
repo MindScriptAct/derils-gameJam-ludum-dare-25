@@ -17,7 +17,7 @@ public class GuiMediator extends Mediator {
 	public var guiProxy:GuiProxy;
 	
 	override public function onRegister():void {
-		processMap.provide(view, "gui_view");
+		provide(view, "gui_view");
 		
 		addHandler(DataMessage.MONEY_CHANGED, handleMoneyChange);
 		addHandler(DataMessage.SCORED_MONEY_CHANGED, handleScoredMoneyChange);
