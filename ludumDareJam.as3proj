@@ -17,7 +17,6 @@
   <classpaths>
     <class path="src" />
     <class path="libSrc" />
-    <class path="mvcLoger" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -54,6 +53,7 @@
   <libraryPaths>
     <element path="assets\assets.swc" />
     <element path="lib\mvcExpress-live-debug_v1_3_1_BETA.swc" />
+    <element path="lib\mvcExpress_v1_3_1-logger_v1_0.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
