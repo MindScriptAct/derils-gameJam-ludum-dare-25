@@ -54,6 +54,7 @@
     <element path="assets\assets.swc" />
     <element path="lib\mvcExpress-live-debug_v1_3_1_BETA.swc" />
     <element path="lib\mvcExpress_v1_3_1-logger_v1_0.swc" />
+    <element path="lib\flox-as3.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
@@ -73,7 +74,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="src\com\mindscriptact\starlingtest\Main.as" />
+    <compile path="src\com\mindscriptact\ludumDare25\Main.as" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>

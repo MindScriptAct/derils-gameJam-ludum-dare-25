@@ -1,2 +1,4 @@
 /bin/starlingTest.swf
 /obj
+/lib/flox-as3.swc
+/src/FloxConfig.as
